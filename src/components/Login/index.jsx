@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, {  useState } from "react";
 import { Button, Input } from "antd";
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === "admin" && password === "admin") {
-      navigate("/main");
+      navigate("/Home");
     } else {
       alert("Wrong email or password");
     }
@@ -28,12 +28,12 @@ const Login = () => {
         <Input onChange={(e) => setEmail(e.target.value)} />
         <div>Password</div>
         <Input onChange={(e) => setPassword(e.target.value)} type="password" />
-        <NavLink to={"/register"}>
-          <div>no account?</div>
-        </NavLink>
         <Button className="button" onClick={handleSubmit}>
           Log in
         </Button>
+        <NavLink to={"/register"} className="nav">
+          <div>no account?</div>
+        </NavLink>
       </div>
     </div>
   );
