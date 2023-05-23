@@ -1,0 +1,100 @@
+.card_food {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid var(--color-secondary-400);
+  background-color: var(--color-secondary-400);
+
+  .icon_content {
+    position: relative;
+    width: 64px; /* Выберите подходящий размер */
+    height: 64px; /* Выберите подходящий размер */
+    .icon1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 80%;
+      height: 80%;
+      background-color: #F3EAC2;
+      z-index: 1;
+      top: 15%;
+      right: 140%;
+      border-radius: 50%;
+
+    }
+
+    .icon2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 80%;
+      height: 80%;
+      background-color: #E9B872;
+      z-index: 2;
+      border-radius: 50%;
+      bottom: 65%;
+      right: 90%;
+    }
+
+    .icon3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 80%;
+      height: 80%;
+      background-color: #9B6A6C;
+      z-index: 3;
+      border-radius: 50%;
+      bottom: 145%;
+      right: 40%;
+    }
+
+    .icon4 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 80%;
+      height: 80%;
+      background-color:  #611C35;
+      z-index: 4;
+      border-radius: 50%;
+      bottom: 225%;
+      right: -10%;
+    }
+
+    .icon {
+      position: absolute;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    .title {
+      font-family: "Montserrat", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+
+      color: var(--color-secondary-200);
+    }
+    .text {
+      font-family: "Montserrat", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 11.0869px;
+      line-height: 14px;
+      width: 134px;
+      color: var(--color-secondary-200);
+    }
+  }
+}

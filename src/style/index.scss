@@ -1,0 +1,126 @@
+@import 'color';
+//@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+  font-style: normal;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+*:focus,
+*:focus-visible {
+  outline: none !important;
+}
+html {
+  font-size: 20px;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--palette-secondary-main-bg) !important;
+}
+
+p,
+li,
+a,
+b,
+input,
+textarea {
+  color: var(--palette-secondary-700);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+button {
+  font-size: 0.7rem;
+  font-weight: 600;
+  @media (max-width: 768px) {
+    font-size: 0.6rem;
+  }
+}
+b {
+  font-weight: 600;
+}
+a {
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Comfortaa', sans-serif;
+  user-select: none;
+}
+a, span {
+  user-select: none;
+}
+
+h1 {
+  font-size: 2rem;
+}
+h2 {
+  font-size: 1.6rem;
+  color: var(--palette-secondary-700);
+  @media (max-width: 768px) {
+    font-size: 0.9rem;
+  }
+}
+h3 {
+  font-size: 1.2rem;
+}
+h4 {
+  font-size: 0.9rem;
+}
+
+.test {
+  background: var(--palette-secondary-100);
+}
+.container {
+  width: 90%;
+  max-width: 1216px;
+  margin: 0 auto;
+  @media (max-width: 1024px) {
+    margin: 0 50px;
+    width: calc(100% - 100px);
+  }
+  @media (max-width: 768px) {
+    margin: 0 20px;
+    width: calc(100% - 40px);
+  }
+}
+.custom-toast {
+  border-radius: 12px;
+  z-index: 1000;
+  .Toastify__progress-bar {
+    background: var(--palette-light-violet-600);
+  }
+}
+.Toastify__toast-container {
+  top: 4em !important;
+  z-index: 10001;
+}
+
+//// DatePicker styles
+.react-datepicker__day--keyboard-selected {
+  background: rgba(124, 70, 196, 0.44) !important;
+  border-radius: 50% !important;
+  outline: none;
+}
+
+.react-datepicker__day--selected {
+  background: #7C46C4 !important;
+  outline: none;
+}
+
+.react-datepicker__day {
+  border-radius: 50% !important;
+}
+
+.react-datepicker__header {
+  background: rgba(124, 70, 196, 0.11) !important;
+}
