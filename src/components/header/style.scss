@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+  .header_right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header_profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 2px;
+    border-radius: 50%;
+    background-color: var(--color-secondary-100);
+  }
+}

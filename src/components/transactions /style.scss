@@ -1,0 +1,36 @@
+.transaction {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .card_transaction {
+    padding: 20px;
+    background-color: var(--color-secondary-100);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  // добавляем стили для блока стран
+  .countries {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    .countryProgress {
+      margin-bottom: 20px;
+      width: 100%;
+
+      h2 {
+        margin: 0;
+      }
+    }
+  }
+}

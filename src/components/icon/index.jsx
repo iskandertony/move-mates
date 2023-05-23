@@ -12,7 +12,6 @@ const images = importAll(
   require.context("../../assets/icons", false, /\.(png|jpe?g|svg)$/)
 );
 
-console.log("images", images);
 
 const Icon = (props) => {
   const {
@@ -35,7 +34,6 @@ const Icon = (props) => {
   if (!images[name + ".svg"] && !images["_active.svg"]) {
     return <span>none*</span>;
   }
-  console.log("images", images);
   return (
     <div
       className={`icon ${className}`}
