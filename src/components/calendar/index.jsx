@@ -1,42 +1,48 @@
-import React from 'react';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
+import React from "react";
+import { Calendar, momentLocalizer } from "react-big-calendar";
+import moment from "moment";
+import "moment/locale/ru";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "./style.scss";
+import Icon from "../icon";
 
-// Необходимо для корректной работы с библиотекой moment
-import 'moment/locale/ru';
-
-// Необходимо для стилей календаря
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import "./style.scss"
-// Создаем экземпляр локализатора
 const localizer = momentLocalizer(moment);
 
-// Пример событий для календаря
-const events = [
-    {
-        title: 'День рождения',
-        start: moment().toDate(),
-        end: moment().add(1, 'days').toDate(),
-        allDay: true,
-    },
-    {
-        title: 'Встреча',
-        start: moment().add(2, 'days').toDate(),
-        end: moment().add(2, 'days').add(1, 'hours').toDate(),
-        allDay: false,
-    },
-];
+const MyCalendar = () => {
+  const [date, setDate] = React.useState(new Date());
 
-const MyCalendar = () => (
-    <div style={{ height: 700 }}>
-        <Calendar
-            localizer={localizer}
-            events={events}
-            startAccessor="start"
-            endAccessor="end"
-            style={{ height: 500, margin: '50px' }}
+  const handleNavigate = (newDate) => {
+    setDate(newDate);
+  };
+
+  return (
+    <div className="container_mobile">
+      <div className="header">
+        <Icon
+          name={"arrow_left"}
+          onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}
         />
+
+        <div className="date-display">{moment(date).format("MMMM YYYY")}</div>
+
+        <Icon
+          name={"arrow_rigth"}
+          onClick={() => setDate(new Date(date.setMonth(date.getMonth() + 1)))}
+        />
+      </div>
+
+      <Calendar
+        localizer={localizer}
+        startAccessor="start"
+        endAccessor="end"
+        views={["month"]}
+        toolbar={false}
+        date={date}
+        onNavigate={handleNavigate}
+        style={{ height: 500, border: "none" }}
+      />
     </div>
-);
+  );
+};
 
 export default MyCalendar;

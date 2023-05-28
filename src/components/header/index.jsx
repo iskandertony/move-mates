@@ -11,7 +11,6 @@ const Header = () => {
       </div>
       <div className="header_right">
         <Icon name={"notification"} />
-        <Icon name={"profilecircle"} className="header_profile" />
       </div>
       <DrawerMenu open={open} setOpen={setOpen} />
     </div>

@@ -32,7 +32,12 @@ const CardInfo = () => {
 
             <div className="text">
               <div className="name">{item.name}</div>
-              <div className="level">{item.level}</div>
+                <div className="flex gap-5">
+                    <div className="level">{item.level}</div>
+                    <div className="level">{item.format}</div>
+                    <div className="level">{item.status}</div>
+                </div>
+
             </div>
           </div>
 

@@ -40,19 +40,14 @@ const Payment = () => {
 
       {role === "payment" ? (
         <>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItem: "center",
-            }}
-          >
-            <div>Последние транзакции</div>
+          <div className="flex alignC justify-s mb-10">
+            <div className={"name"}>Последние транзакции</div>
             <div>
               <Icon name={"calendar"} />
             </div>
           </div>
           <Transactions />
+          <div className={"name"}>Годовой финансовый отчет</div>
         </>
       ) : (
         <>

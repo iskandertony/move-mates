@@ -8,10 +8,10 @@ const Footer = () => {
       <NavLink to={"/main"}>
         <Icon name={"home"} className={"footer_button"} />
       </NavLink>
-      <NavLink to={"/"}>
+      <NavLink to={"/client"}>
         <Icon name={"personalcard"} className={"footer_button"} />
       </NavLink>
-      <NavLink to={"/"}>
+      <NavLink to={"/calendar"}>
         <Icon name={"big_calendar"} className={"footer_button"} />
       </NavLink>
       <NavLink to={"/"}>

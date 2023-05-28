@@ -1,25 +1,31 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Login from "./components/login";
-import Register from "./components/register";
+import React from "react";
+
+import { Route, Routes } from "react-router-dom";
+
 import Footer from "./components/footer";
-import Main from "./pages/main";
-import Home from "./pages/home";
-import Payment from "./pages/payment";
+
+import { routing } from "./routing";
+import useTokenHook from "./hooks/use-token-hook";
+import axios from "axios";
 
 function App() {
-    return (
-        <main className="app">
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/main" element={<Main />} />
-                <Route path="/payment" element={<Payment />} />
-            </Routes>
-            <Footer/>
-        </main>
-    );
+    // const { token } = useTokenHook();
+    //
+    // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  return (
+    <main className="app">
+      <Routes>
+        {Object.keys(routing).map((key) => {
+          const rout = routing[key];
+          if (rout.role === "all") {
+            return <Route key={rout} path={rout.path} element={rout.element} />;
+          }
+          return null;
+        })}
+      </Routes>
+      <Footer />
+    </main>
+  );
 }
 
 export default App;

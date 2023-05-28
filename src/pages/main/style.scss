@@ -2,9 +2,23 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  .main_title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .background-color {
+    background-color: var(--color-secondary-400);
+  }
+  .card {
+    padding: 10px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+
+    // добавим стили для hover состояния
+    &:hover {
+      background-color: var(--color-primary-400);
+    }
+
+    // стили для активного состояния
+    &.active {
+      background-color: var(--color-primary-600);
+    }
   }
 }

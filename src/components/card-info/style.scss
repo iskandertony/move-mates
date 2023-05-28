@@ -1,10 +1,9 @@
 .card_info {
-  overflow: auto;
   display: flex;
+  flex-direction: column;
   gap: 10px;
   .card_info_container {
-    min-width: 280px;
-    max-width: 280px;
+
     padding: 10px;
     background-color: var(--color-secondary-300);
     border: 1px solid var(--color-secondary-200);

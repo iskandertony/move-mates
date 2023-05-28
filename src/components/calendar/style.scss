@@ -1,0 +1,47 @@
+$calendarHeight: 700px;
+$buttonSize: 40px;
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: $calendarHeight + $buttonSize * 2;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .date-display {
+      text-align: center;
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $buttonSize;
+      height: $buttonSize;
+      background: none;
+      border: none;
+      cursor: pointer;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+
+}
+.rbc-calendar {
+  width: 100%;
+  height: $calendarHeight;
+  margin: 0;
+  border: none !important;
+}
+.rbc-day-bg + .rbc-day-bg {
+  border: none !important;
+}

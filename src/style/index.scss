@@ -2,6 +2,12 @@
 //@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+}
 * {
   padding: 0;
   margin: 0;
@@ -65,7 +71,7 @@ h1 {
 }
 h2 {
   font-size: 1.6rem;
-  color: var(--palette-secondary-700);
+  color: var(--color-secondary-200);
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
@@ -123,4 +129,70 @@ h4 {
 
 .react-datepicker__header {
   background: rgba(124, 70, 196, 0.11) !important;
+}
+
+.nav {
+  text-decoration: none;
+}
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px 40px;
+}
+
+
+.container_mobile {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.back_ground {
+  padding-top: 40px;
+  background-color: var(--color-secondary-700);
+  height: 100%;
+  padding-bottom: 20px;
+}
+
+.title {
+  font-family: 'Montserrat',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14.3087px;
+  line-height: 145%;
+  color: var(--color-secondary-200);
+}
+
+.name {
+
+  font-family: 'Montserrat',sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 145%;
+  color: var(--color-secondary-200);
+}
+
+.text {
+  font-family: 'Montserrat',sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.2081px;
+  line-height: 145%;
+  color: var(--color-secondary-200);
+}
+
+.subscription {
+
+}
+
+.description {
+
+}
+
+.card {
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--color-secondary-100);
+  background-color: var(--color-secondary-100);
 }

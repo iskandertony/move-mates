@@ -1,43 +1,52 @@
-import React from "react";
-import "./style.scss";
-import Header from "../../components/header";
-import Icon from "../../components/icon";
-import CardInfo from "../../components/card-info";
-import CardClient from "../../components/card-client";
-import CardFood from "../../components/card-food";
-import CardStatistics from "../../components/statistics";
+import React, { useState } from "react";
 
+import Header from "../../components/header";
+import moment from "moment";
+import CardInfo from "../../components/card-info";
+import CalendarWeek from "../../components/calendar-week";
+import CardStatistics from "../../components/statistics";
+import CardInvite from "../../components/card-invite";
+
+import "./style.scss";
+import userStore from "../../store/user";
+import authStore from "../../store/auth";
 const Main = () => {
+  const [activityStatus, setActivityStatus] = useState("Предстоящие");
+  const currentMonth = moment().format("MMMM");
+  const tabs = ["Предстоящие", "Запросы", "Действия"];
+
+  const renderContent = () => {
+    switch (activityStatus) {
+      case "Предстоящие":
+        return <CardInfo />;
+      case "Запросы":
+        return <CardInvite />;
+      case "Действия":
+        return <CardStatistics />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="main back_ground container_mobile">
       <Header />
-      <div>Доброе утро, Айдай</div>
+      <div className="name">Доброе утро, {userStore.user?.userName}</div>
+      <div className="name">{currentMonth}</div>
+      <CalendarWeek />
 
-      <div className="main_title">
-        <div>
-          <h2>Сегодняшние тренировки</h2>
-        </div>
-        <div>
-          <Icon name={"calendar"} />
-        </div>
+      <div className="flex card background-color gap-10 justify-s">
+        {tabs.map((tab) => (
+          <div
+            className={`card title ${activityStatus === tab ? "active" : ""}`}
+            onClick={() => setActivityStatus(tab)}
+          >
+            {tab}
+          </div>
+        ))}
       </div>
 
-        <CardInfo/>
-
-      <div className="main_title">
-        <div>
-          <h2>Новые клиенты</h2>
-        </div>
-        <div>
-          <h6>Сегодня</h6>
-        </div>
-      </div>
-
-        <CardClient/>
-        <CardFood/>
-
-        <h2>Статистика</h2>
-        <CardStatistics/>
+      {renderContent()}
     </div>
   );
 };

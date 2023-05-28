@@ -1,0 +1,29 @@
+.calendar {
+  display: flex;
+  gap: 15px;
+  overflow: auto;
+  padding: 15px 0;
+  width: 390px;
+
+  .calendar-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 40px;
+    height: 60px;
+    background: #3f6288;
+    box-shadow: 0px 4px 10px rgba(0, 115, 204, 0.26);
+    border-radius: 18px;
+
+    &.today {
+      background: blue;
+    }
+
+    .calendar-day-number,
+    .calendar-day-name {
+      color: #fff;
+      font-size: 12px;
+    }
+  }
+}

@@ -1,15 +1,19 @@
 import React from "react";
-import "./style.scss";
+
 import {NavLink} from "react-router-dom";
+import {Button} from "antd"
+
+import "./style.scss";
 const WelcomePage = () => {
   return (
-    <div className="welcome container">
-      <div className="title">Welcome Page</div>
+    <div className="welcome">
+        <div className="img"></div>
+      <div className="text">Choose your option</div>
       <NavLink to="/register" className="nav">
-        <div>Registration</div>
+        <Button className="button">Registration</Button>
       </NavLink>
         <NavLink to="/login" className="nav">
-            <div>Login</div>
+            <Button className="button" >Login</Button>
         </NavLink>
     </div>
   );
