@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import axios from "axios";
 import { BASE_API_URL } from "../helpers/api";
-import authStore from "./auth";
+import authStore from "./coach";
 
 function createUserStore() {
   let store = {
@@ -16,7 +16,7 @@ function createUserStore() {
         if (authStore?.token) {
           const response = await axios.get(`${BASE_API_URL}/api/coaches/me`, {
             headers: {
-              Authorization: `Bearer ${authStore.token}`,
+              Authorization: `Bearer ${authStore?.token}`,
             },
           });
           runInAction(() => {
@@ -24,10 +24,9 @@ function createUserStore() {
           });
         }
       } catch (error) {
-        console.error('Failed to fetch user:', error);
+        console.error("Failed to fetch user:", error);
       }
     },
-
   };
 
   makeAutoObservable(store);

@@ -9,7 +9,7 @@ import CardInvite from "../../components/card-invite";
 
 import "./style.scss";
 import userStore from "../../store/user";
-import authStore from "../../store/auth";
+import authStore from "../../store/coach";
 const Main = () => {
   const [activityStatus, setActivityStatus] = useState("Предстоящие");
   const currentMonth = moment().format("MMMM");

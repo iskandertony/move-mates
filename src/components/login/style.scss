@@ -18,21 +18,19 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 145%;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     display: flex;
     align-items: center;
 
     color: var(--color-secondary-200);
   }
 
-  .login_input {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 420px;
-    margin: 0 auto;
-    gap: 160px;
+  .alert {
+    margin-bottom: 20px;
+    color: red;
+  }
 
+  .login_input {
     .title {
       font-family: "Montserrat", sans-serif;
       font-style: normal;
@@ -88,7 +86,11 @@
   .login_input_title {
     margin-bottom: 40px;
   }
-
+  .form_login {
+    display: flex;
+    flex-direction: column;
+    gap: 160px;
+  }
   .register_text {
     display: flex;
     justify-content: center;

@@ -5,7 +5,7 @@ import { observer } from "mobx-react";
 
 import Icon from "../icon";
 import userStore from "../../store/user";
-import authStore from "../../store/auth";
+import authStore from "../../store/coach";
 
 import "./style.scss";
 

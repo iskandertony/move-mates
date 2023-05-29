@@ -1,20 +1,27 @@
-$calendarHeight: 700px;
+$calendarHeight: 340px;
 $buttonSize: 40px;
 
-.main {
+.schedule {
   display: flex;
   flex-direction: column;
+  gap: 25px;
   align-items: center;
-  height: $calendarHeight + $buttonSize * 2;
-
+  padding: 10px 20px;
+  border: 1px solid var(--color-secondary-200);
+  border-radius: 20px;
+  margin-top: 40px;
   .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-
+    padding: 0;
     .date-display {
       text-align: center;
+
+      .title {
+        color: var(--color-secondary-700);
+      }
     }
 
     button {
@@ -32,9 +39,17 @@ $buttonSize: 40px;
         height: auto;
       }
     }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: 1px solid var(--color-secondary-700);
+    }
   }
-
-
 }
 .rbc-calendar {
   width: 100%;
@@ -44,4 +59,27 @@ $buttonSize: 40px;
 }
 .rbc-day-bg + .rbc-day-bg {
   border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rbc-month-row + .rbc-month-row {
+  border: none !important;
+}
+
+.rbc-month-view {
+  border: none !important;
+}
+
+.rbc-header + .rbc-header {
+  border: none !important;
+}
+
+.rbc-header {
+  border: none !important;
+}
+
+.rbc-today .rbc-date {
+  color: purple;
 }

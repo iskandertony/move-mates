@@ -16,16 +16,21 @@ const MyCalendar = () => {
   };
 
   return (
-    <div className="container_mobile">
+    <div className=" schedule">
       <div className="header">
         <Icon
+          className={"arrow"}
           name={"arrow_left"}
           onClick={() => setDate(new Date(date.setMonth(date.getMonth() - 1)))}
         />
 
-        <div className="date-display">{moment(date).format("MMMM YYYY")}</div>
+        <div className="date-display">
+          <p className="name">{moment(date).format("MMMM ")}</p>
+          <p className="title">{moment(date).format(" YYYY")}</p>
+        </div>
 
         <Icon
+          className={"arrow"}
           name={"arrow_rigth"}
           onClick={() => setDate(new Date(date.setMonth(date.getMonth() + 1)))}
         />
@@ -36,10 +41,12 @@ const MyCalendar = () => {
         startAccessor="start"
         endAccessor="end"
         views={["month"]}
+        // components={{
+        //     day: ColoredDateCellWrapper,
+        // }}
         toolbar={false}
         date={date}
         onNavigate={handleNavigate}
-        style={{ height: 500, border: "none" }}
       />
     </div>
   );

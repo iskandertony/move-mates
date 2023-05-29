@@ -5,7 +5,8 @@ import Main from "../pages/main";
 import Payment from "../pages/payment";
 import ClientList from "../pages/clients";
 import ClientDetails from "../pages/clients-details";
-import Calendar from "../components/calendar";
+
+import Schedule from "../pages/schedule"
 export const routing = {
   welcomePage: {
     path: "/dashboard",
@@ -50,9 +51,9 @@ export const routing = {
     role: "all",
   },
 
-  calendar: {
+  Schedule: {
     path: "/calendar",
-    element: <Calendar />, //
+    element: <Schedule />, //
     protected: false,
     role: "all",
   },
