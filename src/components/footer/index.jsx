@@ -23,7 +23,7 @@ const Footer = () => {
           <div className={"text"}>Календарь</div>
         </div>
       </NavLink>
-      <NavLink to={"/"}>
+      <NavLink to={"/chat"}>
         <div className={"footer_nav"}>
           <Icon name={"chat"} className={"footer_button"} />
           <div className={"text"}>Чат</div>

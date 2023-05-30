@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "mobx-react";
 import { QueryClient, QueryClientProvider } from "react-query";
 
-import authStore from "./store/coach";
+import authStore from "./store/auth";
 import App from "./App";
 
 import "./style/index.scss";

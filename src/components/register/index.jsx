@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Input, Checkbox, InputNumber, Select } from "antd";
+import { Button, Form, Input, Checkbox } from "antd";
+import PhoneInput from "react-phone-input-2";
 
 import Icon from "../icon";
 import { useForm } from "antd/es/form/Form";
@@ -9,16 +10,9 @@ import useTokenHook from "../../hooks/use-token-hook";
 import userStore from "../../store/user";
 
 import "./style.scss";
-import "../../style/App.scss";
+import "../../style/App.scss"; // todo зачем это тут ?
+import "react-phone-input-2/lib/style.css";
 
-const { Option } = Select;
-const selectBefore = (
-  <Select defaultValue="+996">
-    <Option value="+996">KGZ</Option>
-    <Option value="+7">RUS</Option>
-    <Option value="+1">USA</Option>
-  </Select>
-);
 function Register() {
   const [role, setRole] = useState("client");
   const navigate = useNavigate();
@@ -38,8 +32,8 @@ function Register() {
     const response = await signUp(payload, role);
     if (response?.status === 200) {
       setErrors([]);
-      userStore.setUser(response.data?.user);
-      setToken(response?.data?.token);
+      userStore.setRole(response.data?.loginResponse?.roles[0]);
+      setToken(response?.data?.loginResponse?.token);
       navigate("/main");
       return;
     } else {
@@ -68,7 +62,7 @@ function Register() {
           <Icon name={"client"} />
           Тренер
         </div>
-        <div /> {/*нужен для space-beetwen*/}
+        <div /> {/* todo нужен для space-beetwen придумать че нить другое*/}
       </div>
       <div className="role-line">
         <div className={role === "client" ? "line-active client" : ""}></div>
@@ -103,23 +97,25 @@ function Register() {
         >
           <Input placeholder="Введите ваш е-майл" />
         </Form.Item>
-        {/*<Form.Item*/}
-        {/*  name="phone"*/}
-        {/*  label={"Телефон"}*/}
-        {/*  rules={[*/}
-        {/*    { required: true, message: "Введите номер телефона!" },*/}
-        {/*    {*/}
-        {/*      pattern: /^(\+\d{1,3}[- ]?)?\d{10}$/,*/}
-        {/*      message: "Некорректный номер телефона",*/}
-        {/*    },*/}
-        {/*  ]}*/}
-        {/*>*/}
-        {/*  <InputNumber*/}
-        {/*    addonBefore={selectBefore}*/}
-        {/*    defaultValue={+996}*/}
-        {/*    className={"flex"}*/}
-        {/*  />*/}
-        {/*</Form.Item>*/}
+        <Form.Item
+          name="phone"
+          label={"Телефон"}
+          rules={[
+            { required: true, message: "Введите номер телефона!" },
+            {
+              pattern: /^(\+\d{1,3}[- ]?)?\d{10}$/,
+              message: "Некорректный номер телефона",
+            },
+          ]}
+        >
+          <PhoneInput
+            country={"kg"}
+            value={form.getFieldValue("phone")}
+            onChange={(phone) => form.setFieldsValue({ phone })}
+            onlyCountries={["kg", "ru", "kz", "ae"]}
+            placeholder="Введите ваш номер телефона"
+          />
+        </Form.Item>
         <Form.Item
           name="password"
           label={"Пароль"}

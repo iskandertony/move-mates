@@ -19,7 +19,7 @@ function createAuthStore() {
         return response;
       } catch (error) {
         console.error(error);
-        return error.response;;
+        return error.response;
       }
     },
   };

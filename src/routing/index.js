@@ -5,8 +5,9 @@ import Main from "../pages/main";
 import Payment from "../pages/payment";
 import ClientList from "../pages/clients";
 import ClientDetails from "../pages/clients-details";
-
-import Schedule from "../pages/schedule"
+import Schedule from "../pages/schedule";
+import Chat from "../pages/chat";
+import Settings from "../pages/settings";
 export const routing = {
   welcomePage: {
     path: "/dashboard",
@@ -54,6 +55,20 @@ export const routing = {
   Schedule: {
     path: "/calendar",
     element: <Schedule />, //
+    protected: false,
+    role: "all",
+  },
+
+  Settings: {
+    path: "/settings",
+    element: <Settings />, //
+    protected: false,
+    role: "all",
+  },
+
+  Chat: {
+    path: "/chat",
+    element: <Chat />, //
     protected: false,
     role: "all",
   },

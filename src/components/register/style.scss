@@ -122,5 +122,20 @@
       background-color: var(--color-secondary-400);
       color: var(--color-secondary-100);
     }
+
+    .react-tel-input .form-control {
+      width: 100%;
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      border-radius: unset;
+    }
+
+    .react-tel-input .flag-dropdown {
+      border-top: 0;
+      border-left: 0;
+      border-radius: unset;
+      background-color: var(--color-secondary-100);
+    }
   }
 }

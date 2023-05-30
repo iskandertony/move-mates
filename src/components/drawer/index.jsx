@@ -5,16 +5,13 @@ import { observer } from "mobx-react";
 
 import Icon from "../icon";
 import userStore from "../../store/user";
-import authStore from "../../store/coach";
+import authStore from "../../store/auth";
 
 import "./style.scss";
 
 const DrawerMenu = observer(({ open, setOpen }) => {
   const [placement, setPlacement] = useState("left");
 
-  useEffect(() => {
-    userStore.fetchUser();
-  }, []);
   const onClose = () => {
     setOpen(!open);
   };
@@ -43,10 +40,12 @@ const DrawerMenu = observer(({ open, setOpen }) => {
             Платежи
           </div>
         </NavLink>
-        <div className="settings">
-          <Icon name={"setting"} />
-          Настройки
-        </div>
+        <NavLink to={"/settings"}>
+          <div className="settings">
+            <Icon name={"setting"} />
+            Настройки
+          </div>
+        </NavLink>
         <NavLink to={"/dashboard"}>
           <div className="settings">
             <Icon name={"exit"} />
