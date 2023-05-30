@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, Input, Checkbox } from "antd";
+import { Button, Form, Input, Checkbox, InputNumber, Select } from "antd";
 
 import Icon from "../icon";
 import { useForm } from "antd/es/form/Form";
@@ -10,6 +10,15 @@ import userStore from "../../store/user";
 
 import "./style.scss";
 import "../../style/App.scss";
+
+const { Option } = Select;
+const selectBefore = (
+  <Select defaultValue="+996">
+    <Option value="+996">KGZ</Option>
+    <Option value="+7">RUS</Option>
+    <Option value="+1">USA</Option>
+  </Select>
+);
 function Register() {
   const [role, setRole] = useState("client");
   const navigate = useNavigate();
@@ -59,7 +68,7 @@ function Register() {
           <Icon name={"client"} />
           Тренер
         </div>
-        <div></div> {/*нужен для space-beetwen*/}
+        <div /> {/*нужен для space-beetwen*/}
       </div>
       <div className="role-line">
         <div className={role === "client" ? "line-active client" : ""}></div>
@@ -94,7 +103,7 @@ function Register() {
         >
           <Input placeholder="Введите ваш е-майл" />
         </Form.Item>
-        {/*<Form.Item todo вернуть номер  */}
+        {/*<Form.Item*/}
         {/*  name="phone"*/}
         {/*  label={"Телефон"}*/}
         {/*  rules={[*/}

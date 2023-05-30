@@ -9,5 +9,12 @@
   .footer_button {
     margin: 0 10px;
   }
+
+  .footer_nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 

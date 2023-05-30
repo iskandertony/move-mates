@@ -6,16 +6,28 @@ const Footer = () => {
   return (
     <div className="footer container_mobile">
       <NavLink to={"/main"}>
-        <Icon name={"home"} className={"footer_button"} />
+        <div className={"footer_nav"}>
+          <Icon name={"home"} className={"footer_button"} />
+          <div className={"text"}>Главная</div>
+        </div>
       </NavLink>
       <NavLink to={"/client"}>
-        <Icon name={"personalcard"} className={"footer_button"} />
+        <div className={"footer_nav"}>
+          <Icon name={"personalcard"} className={"footer_button"} />
+          <div className={"text"}>Тренеры</div>
+        </div>
       </NavLink>
       <NavLink to={"/calendar"}>
-        <Icon name={"big_calendar"} className={"footer_button"} />
+        <div className={"footer_nav"}>
+          <Icon name={"big_calendar"} className={"footer_button"} />
+          <div className={"text"}>Календарь</div>
+        </div>
       </NavLink>
       <NavLink to={"/"}>
-        <Icon name={"chat"} className={"footer_button"} />
+        <div className={"footer_nav"}>
+          <Icon name={"chat"} className={"footer_button"} />
+          <div className={"text"}>Чат</div>
+        </div>
       </NavLink>
     </div>
   );
