@@ -26,7 +26,7 @@ const CardInfo = () => {
     <div className="card_info">
       {info.map((item) => (
         <div className="card_info_container">
-          <div className="card_info_status">{item.soon}</div>
+          <div className="card_info_status right_conor">{item.soon}</div>
           <div className="card_info_info">
             <Icon name={"big_profile"} className="profile" />
 

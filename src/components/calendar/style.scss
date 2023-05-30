@@ -2,45 +2,35 @@ $calendarHeight: 340px;
 $buttonSize: 40px;
 
 .schedule {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  align-items: center;
-  padding: 10px 20px;
-  border: 1px solid var(--color-secondary-200);
-  border-radius: 20px;
   margin-top: 40px;
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .react-calendar {
+    border-radius: 10px;
     width: 100%;
-    padding: 0;
-    .date-display {
-      text-align: center;
+    padding: 10px 20px;
+  }
 
-      .title {
-        color: var(--color-secondary-700);
-      }
-    }
-
-    button {
+  .react-calendar__tile--now {
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-secondary-600);
+    color: var(--color-secondary-100);
+  }
+  .react-calendar__navigation {
+    display: flex;
+    align-items: center;
+    .react-calendar__navigation__next-button  {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: $buttonSize;
-      height: $buttonSize;
-      background: none;
-      border: none;
-      cursor: pointer;
-
-      img {
-        width: 100%;
-        height: auto;
-      }
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      border: 1px solid var(--color-secondary-700);
     }
 
-    .arrow {
+    .react-calendar__navigation__prev-button {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -50,36 +40,23 @@ $buttonSize: 40px;
       border: 1px solid var(--color-secondary-700);
     }
   }
-}
-.rbc-calendar {
-  width: 100%;
-  height: $calendarHeight;
-  margin: 0;
-  border: none !important;
-}
-.rbc-day-bg + .rbc-day-bg {
-  border: none !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.rbc-month-row + .rbc-month-row {
-  border: none !important;
-}
 
-.rbc-month-view {
-  border: none !important;
-}
+  abbr {
+    text-decoration: none !important;
+  }
+  .react-calendar__month-view__days__day--weekend {
+    color: var(--color-secondary-700);
+  }
+  .react-calendar__navigation__next2-button {
+    display: none !important;
+  }
 
-.rbc-header + .rbc-header {
-  border: none !important;
-}
+  .react-calendar__navigation__prev2-button {
+    display: none !important;
+  }
 
-.rbc-header {
-  border: none !important;
-}
-
-.rbc-today .rbc-date {
-  color: purple;
+  .react-calendar__tile:disabled {
+    background-color: unset;
+  }
 }
