@@ -21,13 +21,13 @@ const CalendarAddEvent = () => {
       <div className="name pt-20 flex justify-c alignC">Добавить новое событие</div>
       <Form onFinish={onFinish}>
         <Form.Item
-          name="date"
+          name="nameEvent"
           rules={[{ required: true, message: "Please select a date!" }]}
         >
           <Input placeholder="name" style={{ width: "100%" }} />
         </Form.Item>
         <Form.Item
-          name="date"
+          name="client"
           rules={[{ required: true, message: "Please select a date!" }]}
         >
           <Input placeholder="Select date" style={{ width: "100%" }} />

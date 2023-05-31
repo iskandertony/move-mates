@@ -1,7 +1,10 @@
 import React from "react";
 import Icon from "../icon";
 import "./style.scss";
-const CardInfo = () => {
+import { Button } from "antd";
+import moment from "moment";
+const CardInfo = (props) => {
+  const { selectedDate } = props;
   const info = [
     {
       name: "Айдай",
@@ -10,7 +13,7 @@ const CardInfo = () => {
       time: `09:00-10:00`,
       soon: "Скоро",
       format: "Онлайн",
-      calendar: "Понед,16 мая",
+      calendar: "2023-05-16",
     },
     {
       name: "Иска",
@@ -19,12 +22,36 @@ const CardInfo = () => {
       time: `09:00-10:00`,
       soon: "Скоро",
       format: "Онлайн",
-      calendar: "Понед,16 мая",
+      calendar: "2023-05-30",
+    },
+    {
+      name: "Куб",
+      status: "Подтверждено",
+      level: "Начинающий",
+      time: `09:00-10:00`,
+      soon: "Скоро",
+      format: "Онлайн",
+      calendar: "2023-05-29",
     },
   ];
+
+  const today = moment().startOf("day");
+  let filteredCards = info;
+
+  if (selectedDate) {
+    if (moment(selectedDate).isSame(today)) {
+      filteredCards = info;
+    } else {
+      filteredCards = info.filter((item) =>
+        moment(item.calendar).isSame(selectedDate, "day")
+      );
+    }
+  }
+
+  filteredCards.sort((a, b) => moment(b.calendar).diff(moment(a.calendar)));
   return (
     <div className="card_info">
-      {info.map((item) => (
+      {filteredCards.map((item) => (
         <div className="card_info_container">
           <div className="card_info_status right_conor">{item.soon}</div>
           <div className="card_info_info">
@@ -32,12 +59,11 @@ const CardInfo = () => {
 
             <div className="text">
               <div className="name">{item.name}</div>
-                <div className="flex gap-5">
-                    <div className="level">{item.level}</div>
-                    <div className="level">{item.format}</div>
-                    <div className="level">{item.status}</div>
-                </div>
-
+              <div className="flex gap-5">
+                <div className="level">{item.level}</div>
+                <div className="level">{item.format}</div>
+                <div className="level">{item.status}</div>
+              </div>
             </div>
           </div>
 
@@ -50,14 +76,7 @@ const CardInfo = () => {
               <Icon name={"clock"} />
               <div>{item.time}</div>
             </div>
-            <div className="card_item">
-              <Icon name={"location"} className={"icon"} />
-              <div>{item.format}</div>
-            </div>
-            <div className="card_item_status">
-              <div>Статус:</div>
-              <div>{item.status}</div>
-            </div>
+            <Button>Начать тренировку</Button>
           </div>
         </div>
       ))}

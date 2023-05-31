@@ -12,13 +12,14 @@ import userStore from "../../store/user";
 
 const Main = () => {
   const [activityStatus, setActivityStatus] = useState("Предстоящие");
+  const [selectedDate, setSelectedDate] = useState(null);
   const currentMonth = moment().format("MMMM");
   const tabs = ["Предстоящие", "Запросы", "Действия"];
 
   const renderContent = () => {
     switch (activityStatus) {
       case "Предстоящие":
-        return <CardInfo />;
+        return <CardInfo selectedDate={selectedDate} />;
       case "Запросы":
         return <CardInvite />;
       case "Действия":
@@ -27,13 +28,12 @@ const Main = () => {
         return null;
     }
   };
-
   return (
     <div className="main back_ground container_mobile">
       <Header />
       <div className="name">Доброе утро, {userStore.user?.userName}</div>
       <div className="name">{currentMonth}</div>
-      <CalendarWeek />
+      <CalendarWeek onDayClick={setSelectedDate} selectedDate={selectedDate}/>
 
       <div className="flex card background-color gap-10 justify-s">
         {tabs.map((tab) => (

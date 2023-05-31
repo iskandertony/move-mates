@@ -25,4 +25,12 @@
       font-size: 12px;
     }
   }
+
+  .calendar-day.selected {
+    background-color: darkblue;
+  }
+
+  .calendar-day.today {
+    background-color: blue;
+  }
 }
