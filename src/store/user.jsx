@@ -8,23 +8,24 @@ function createUserStore() {
     user: null,
     role: null,
 
-    setUser(payload) {
-      runInAction(() => {
-        //TODO Нужна ли эта функция в дальнешем ?
-        store.user = payload;
-      });
-    },
+    // setUser(payload) {
+    //   runInAction(() => {
+    //     store.user = payload; TODO НУЖНА ЛИ ЭТА ФУНКЦИЯ ?
+    //     localStorage.setItem("user", JSON.stringify(payload));
+    //   });
+    // },
 
     setRole(role) {
       runInAction(() => {
         store.role = role;
+        localStorage.setItem("role", role);
       });
     },
 
     async fetchUser() {
       try {
         if (authStore?.token) {
-          let lowercaseRole = store.role.toLowerCase();
+          let lowercaseRole = store.role?.toLowerCase();
           if (lowercaseRole === "coach") {
             lowercaseRole += "es";
           }
@@ -38,10 +39,23 @@ function createUserStore() {
           );
           runInAction(() => {
             store.user = response?.data;
+            localStorage.setItem("user", JSON.stringify(response?.data));
           });
         }
       } catch (error) {
         console.error("Failed to fetch user:", error);
+      }
+    },
+    loadFromLocalStorage() {
+      const storedUser = localStorage.getItem("user");
+      const storedRole = localStorage.getItem("role");
+
+      if (storedUser) {
+        store.user = JSON.parse(storedUser);
+      }
+
+      if (storedRole) {
+        store.role = storedRole;
       }
     },
   };
@@ -53,6 +67,7 @@ function createUserStore() {
     }
   );
 
+  store.loadFromLocalStorage();
   makeAutoObservable(store);
   return store;
 }

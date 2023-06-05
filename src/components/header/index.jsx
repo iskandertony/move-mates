@@ -4,6 +4,7 @@ import Icon from "../icon";
 import Hamburger from "../hamburger";
 
 import "./style.scss";
+import { NavLink } from "react-router-dom";
 const Header = () => {
   return (
     <div className="header ">
@@ -11,7 +12,9 @@ const Header = () => {
         <Hamburger />
       </div>
       <div className="header_right">
-        <Icon name={"notification"} />
+        <NavLink to={"/notifications"}>
+          <Icon name={"notification"} />
+        </NavLink>
       </div>
     </div>
   );

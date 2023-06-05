@@ -12,6 +12,8 @@ import userStore from "../../store/user";
 import "./style.scss";
 import "../../style/App.scss"; // todo зачем это тут ?
 import "react-phone-input-2/lib/style.css";
+import ArrowBack from "../arrow-back";
+import authStore from "../../store/auth";
 
 function Register() {
   const [role, setRole] = useState("client");
@@ -34,6 +36,7 @@ function Register() {
       setErrors([]);
       userStore.setRole(response.data?.loginResponse?.roles[0]);
       setToken(response?.data?.loginResponse?.token);
+      authStore.setToken(response?.data?.loginResponse?.token);
       navigate("/main");
       return;
     } else {
@@ -42,7 +45,7 @@ function Register() {
   };
   return (
     <div className="container_mobile register">
-      <Icon name={"back"} />
+      <ArrowBack />
       <div className="register_title">Создать учетную запись</div>
       <div className="register_text">
         Создайте учетную запись, чтобы начать работу с приложением
@@ -112,7 +115,18 @@ function Register() {
             country={"kg"}
             value={form.getFieldValue("phone")}
             onChange={(phone) => form.setFieldsValue({ phone })}
-            onlyCountries={["kg", "ru", "kz", "ae"]}
+            onlyCountries={[
+              "kg",
+              "kz",
+              "ru",
+              "uz",
+              "us",
+              "ca",
+              "ae",
+              "de",
+              "gb",
+              "fr",
+            ]}
             placeholder="Введите ваш номер телефона"
           />
         </Form.Item>

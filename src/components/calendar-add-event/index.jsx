@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import {
   Input,
   DatePicker,
@@ -8,17 +9,39 @@ import {
   Radio,
   Button,
 } from "antd";
-import "./style.scss"
+import "./style.scss";
+import { createAppointments, getAppointments } from "../../api";
 const { TextArea } = Input;
 
 const CalendarAddEvent = () => {
-  const onFinish = (values) => {
-    console.log("Received values from form: ", values);
+  const onFinish = async (values) => {
+    const payload = {
+      startOfAppointment: moment(values.time[0].$d).parseZone(),
+      endOfAppointment: moment(values.time[1].$d).parseZone(),
+      // clientId: values.client,
+      createClientRequest: {
+        name: "iska",
+        email: "df@gmail.com",
+        phone: "+996 505 343 234",
+      },
+      type: values.type,
+      description: values.description,
+    };
+    try {
+      const response = await createAppointments(payload);
+      if (response && response?.status === 200) {
+        console.log("status 200 ,what response?", response);
+      }
+    } catch (error) {
+      console.log("Error while trying to login:", error);
+    }
   };
 
   return (
     <div className=" calendar_add_event">
-      <div className="name pt-20 flex justify-c alignC">Добавить новое событие</div>
+      <div className="name pt-20 flex justify-c alignC">
+        Добавить новое событие
+      </div>
       <Form onFinish={onFinish}>
         <Form.Item
           name="nameEvent"
@@ -30,7 +53,7 @@ const CalendarAddEvent = () => {
           name="client"
           rules={[{ required: true, message: "Please select a date!" }]}
         >
-          <Input placeholder="Select date" style={{ width: "100%" }} />
+          <Input placeholder="Client Id" style={{ width: "100%" }} />
         </Form.Item>
         <Form.Item
           name="description"
@@ -69,7 +92,7 @@ const CalendarAddEvent = () => {
         </Form.Item>
 
         <Form.Item
-          name="category"
+          name="type"
           rules={[{ required: true, message: "Please select a category!" }]}
         >
           <Radio.Group>

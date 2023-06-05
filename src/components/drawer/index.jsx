@@ -15,6 +15,11 @@ const DrawerMenu = observer(({ open, setOpen }) => {
   const onClose = () => {
     setOpen(!open);
   };
+  const logOut = () => {
+    sessionStorage.removeItem("token");
+    authStore.setToken(null);
+    localStorage.clear();
+  };
 
   return (
     <>
@@ -47,7 +52,7 @@ const DrawerMenu = observer(({ open, setOpen }) => {
           </div>
         </NavLink>
         <NavLink to={"/dashboard"}>
-          <div className="settings">
+          <div className="settings" onClick={logOut}>
             <Icon name={"exit"} />
             Выйти
           </div>

@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import Icon from "../../components/icon";
 import CardUserInfo from "../../components/card-user-info";
+import ArrowBack from "../../components/arrow-back";
 
 const ClientDetails = () => {
   const currentYear = new Date().getFullYear();
@@ -40,6 +41,7 @@ const ClientDetails = () => {
     <div className="client_details container_mobile back_ground">
 
       <div>
+        <ArrowBack />
         <div className="flex alignC justify-c flex-column gap-5">
           <Icon name={"big_calendar"} />
           <div className="name">Айдай</div>

@@ -9,8 +9,10 @@ import CardInvite from "../../components/card-invite";
 
 import "./style.scss";
 import userStore from "../../store/user";
+import authStore from "../../store/auth";
+import { observer } from "mobx-react";
 
-const Main = () => {
+const Main = observer(() => {
   const [activityStatus, setActivityStatus] = useState("Предстоящие");
   const [selectedDate, setSelectedDate] = useState(null);
   const currentMonth = moment().format("MMMM");
@@ -33,7 +35,7 @@ const Main = () => {
       <Header />
       <div className="name">Доброе утро, {userStore.user?.userName}</div>
       <div className="name">{currentMonth}</div>
-      <CalendarWeek onDayClick={setSelectedDate} selectedDate={selectedDate}/>
+      <CalendarWeek onDayClick={setSelectedDate} selectedDate={selectedDate} />
 
       <div className="flex card background-color gap-10 justify-s">
         {tabs.map((tab) => (
@@ -49,6 +51,6 @@ const Main = () => {
       {renderContent()}
     </div>
   );
-};
+});
 
 export default Main;

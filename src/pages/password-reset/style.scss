@@ -1,0 +1,12 @@
+.reset_password {
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  .title {
+    width: 345px;
+    text-align: center;
+  }
+}

@@ -8,6 +8,9 @@ import Icon from "../icon";
 import useTokenHook from "../../hooks/use-token-hook";
 
 import "./style.scss";
+import ArrowBack from "../arrow-back";
+import authStore from "../../store/auth";
+import userStore from "../../store/user";
 
 const Login = inject("authStore")(
   observer(({ authStore }) => {
@@ -24,8 +27,11 @@ const Login = inject("authStore")(
       try {
         const response = await login(payload);
         if (response && response?.status === 200) {
+          userStore.setRole(response.data?.roles[0]);
           setToken(response?.data?.token);
+          authStore.setToken(response?.data?.token);
           navigate("/main");
+          return;
         } else if (response && response?.status === 401) {
           setError(true);
         }
@@ -37,7 +43,7 @@ const Login = inject("authStore")(
 
     return (
       <div className="login container_mobile">
-        <Icon name={"back"} />
+        <ArrowBack />
         <div className="login_title">Авторизоваться</div>
         <div className="login_text">
           Заполнить форму входа, чтобы начать работу с приложением
@@ -78,7 +84,7 @@ const Login = inject("authStore")(
               >
                 <Input.Password placeholder="Password" />
               </Form.Item>
-              <NavLink to={""} className="nav">
+              <NavLink to={"/accounts/password/reset"} className="nav">
                 <div className="text">Забыли пароль ?</div>
               </NavLink>
             </div>

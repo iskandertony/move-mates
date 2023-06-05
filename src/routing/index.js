@@ -8,6 +8,10 @@ import ClientDetails from "../pages/clients-details";
 import Schedule from "../pages/schedule";
 import Chat from "../pages/chat";
 import Settings from "../pages/settings";
+import ResetPassword from "../pages/password-reset";
+import ValidatePassword from "../pages/password-validate";
+import ConfirmPassword from "../pages/password-confirm";
+import Notifications from "../pages/notifications";
 export const routing = {
   welcomePage: {
     path: "/dashboard",
@@ -69,6 +73,34 @@ export const routing = {
   Chat: {
     path: "/chat",
     element: <Chat />, //
+    protected: false,
+    role: "all",
+  },
+
+  Reset: {
+    path: "/accounts/password/reset",
+    element: <ResetPassword />, //
+    protected: false,
+    role: "all",
+  },
+
+  Validate: {
+    path: "/accounts/password/validate",
+    element: <ValidatePassword />, //
+    protected: false,
+    role: "all",
+  },
+
+  Confirm: {
+    path: "/accounts/password/confirm",
+    element: <ConfirmPassword />, //
+    protected: false,
+    role: "all",
+  },
+
+  Notifications: {
+    path: "/notifications",
+    element: <Notifications />, //
     protected: false,
     role: "all",
   },

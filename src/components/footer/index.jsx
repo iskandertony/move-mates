@@ -2,6 +2,7 @@ import React from "react";
 import "./style.scss";
 import { NavLink } from "react-router-dom";
 import Icon from "../icon";
+import userStore from "../../store/user";
 const Footer = () => {
   return (
     <div className="footer container_mobile">
@@ -14,7 +15,9 @@ const Footer = () => {
       <NavLink to={"/client"}>
         <div className={"footer_nav"}>
           <Icon name={"personalcard"} className={"footer_button"} />
-          <div className={"text"}>Тренеры</div>
+          <div className={"text"}>
+            {userStore.role === "COACH" ? "Клиенты" : "Тренеры"}
+          </div>
         </div>
       </NavLink>
       <NavLink to={"/calendar"}>

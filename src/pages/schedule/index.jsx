@@ -9,6 +9,7 @@ import CalendarAddEvent from "../../components/calendar-add-event";
 const Schedule = () => {
   const [show, setShow] = useState(false);
   return (
+      <>
     <div className="container_mobile back_ground flex flex-column gap-20">
       <MyCalendar />
       <CardAdd
@@ -17,8 +18,9 @@ const Schedule = () => {
         onClick={() => setShow(true)}
       />
       <CardCalendarWorkouts />
-      <ModalCalendar show={show} setShow={setShow} children={ <CalendarAddEvent/> }/>
     </div>
+    <ModalCalendar show={show} setShow={setShow} children={ <CalendarAddEvent/> }/>
+      </>
   );
 };
 
