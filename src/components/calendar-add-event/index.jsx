@@ -10,9 +10,12 @@ import {
   Button,
   AutoComplete,
 } from "antd";
-import "./style.scss";
-import { createAppointments, getAppointments, getClientsList } from "../../api";
+
+import { createAppointments } from "../../api";
 import listUsers from "../../store/listUsers";
+
+import "./style.scss";
+
 const { TextArea } = Input;
 
 const CalendarAddEvent = (params) => {
@@ -24,7 +27,7 @@ const CalendarAddEvent = (params) => {
     if (!listUsers.loading) {
       setClientList(listUsers.users);
     }
-  }, [listUsers.loading, listUsers.users]);
+  }, []);
 
   const onSearch = (searchText) => {
     const filteredList = clientList.filter((item) =>
