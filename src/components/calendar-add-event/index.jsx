@@ -20,11 +20,11 @@ const CalendarAddEvent = (params) => {
   const [clientList, setClientList] = useState([]);
   const [selectedClient, setSelectedClient] = useState(null);
 
-  if (listUsers.users) {
-    setClientList(listUsers.users);
-  }
-
-  console.log("list asdf", clientList);
+  useEffect(() => {
+    if (!listUsers.loading) {
+      setClientList(listUsers.users);
+    }
+  }, [listUsers.loading, listUsers.users]);
 
   const onSearch = (searchText) => {
     const filteredList = clientList.filter((item) =>
@@ -84,13 +84,10 @@ const CalendarAddEvent = (params) => {
           rules={[{ required: true, message: "Please select a date!" }]}
         >
           <AutoComplete
-            options={
-              !listUsers.loading &&
-              clientList.map((client) => ({
-                value: client.userName,
-                key: client.id,
-              }))
-            }
+            options={clientList.map((client) => ({
+              value: client.userName,
+              key: client.id,
+            }))}
             style={{ width: "100%" }}
             onSelect={onSelect}
             onSearch={onSearch}
