@@ -14,12 +14,12 @@ const CardInfo = (props) => {
       if (authStore.token) {
         const filter = {
           from: moment(selectedDate).toISOString(),
-          size: 3,
+          size: 20,
           page: 0,
         };
         try {
           const response = await getAppointments(filter);
-          console.log("response", response);
+          // console.log("response", response);
           setInfo(response.content);
         } catch (error) {
           console.log("error", error);
@@ -34,11 +34,9 @@ const CardInfo = (props) => {
   let filteredCards = info;
 
   if (selectedDate) {
-    if (!moment(selectedDate).isSame(today)) {
-      filteredCards = info.filter((item) =>
-        moment(item.startOfAppointment).isSame(selectedDate, "day")
-      );
-    }
+    filteredCards = info.filter((item) =>
+      moment(item.startOfAppointment).isSame(selectedDate, "day")
+    );
   }
 
   filteredCards.sort((a, b) => moment(b.calendar).diff(moment(a.calendar)));

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import {
   Input,
@@ -8,33 +8,63 @@ import {
   Form,
   Radio,
   Button,
+  AutoComplete,
 } from "antd";
 import "./style.scss";
-import { createAppointments, getAppointments } from "../../api";
+import { createAppointments, getAppointments, getClientsList } from "../../api";
+import listUsers from "../../store/listUsers";
 const { TextArea } = Input;
 
-const CalendarAddEvent = () => {
+const CalendarAddEvent = (params) => {
+  const { setShow } = params;
+  const [clientList, setClientList] = useState([]);
+  const [selectedClient, setSelectedClient] = useState(null);
+
+  if (listUsers.users) {
+    setClientList(listUsers.users);
+  }
+
+  console.log("list asdf", clientList);
+
+  const onSearch = (searchText) => {
+    const filteredList = clientList.filter((item) =>
+      item.userName?.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setClientList(filteredList);
+  };
+
+  const onSelect = (value, option) => {
+    setSelectedClient(option.key);
+  };
   const onFinish = async (values) => {
+    const dateMoment = moment(values.date);
+    const date = values.date.$D;
+    const month = values.date.$M;
+    const year = dateMoment.year();
+    const startTime = values.time[0].date(date).month(month).year(year); //TODO ПОМЕНЯТЬ НАПИСАЛ ПЛОХО
+    const endTime = values.time[1].date(date).month(month).year(year);
     const payload = {
-      startOfAppointment: moment(values.time[0].$d).parseZone(),
-      endOfAppointment: moment(values.time[1].$d).parseZone(),
-      // clientId: values.client,
-      createClientRequest: {
-        name: "iska",
-        email: "df@gmail.com",
-        phone: "+996 505 343 234",
-      },
+      startOfAppointment: startTime.toISOString(),
+      endOfAppointment: endTime.toISOString(),
+      clientId: selectedClient,
+      // createClientRequest: {
+      //   name: values.client,
+      //   email: `${values.client}@gmail.com`,
+      //   phone: "+996 505 343 234",
+      // },
       type: values.type,
       description: values.description,
     };
     try {
       const response = await createAppointments(payload);
       if (response && response?.status === 200) {
-        console.log("status 200 ,what response?", response);
+        // console.log("status 200 ,what response?", response);
       }
     } catch (error) {
       console.log("Error while trying to login:", error);
     }
+
+    setShow(false);
   };
 
   return (
@@ -53,7 +83,19 @@ const CalendarAddEvent = () => {
           name="client"
           rules={[{ required: true, message: "Please select a date!" }]}
         >
-          <Input placeholder="Client Id" style={{ width: "100%" }} />
+          <AutoComplete
+            options={
+              !listUsers.loading &&
+              clientList.map((client) => ({
+                value: client.userName,
+                key: client.id,
+              }))
+            }
+            style={{ width: "100%" }}
+            onSelect={onSelect}
+            onSearch={onSearch}
+            placeholder="Select a client"
+          />
         </Form.Item>
         <Form.Item
           name="description"

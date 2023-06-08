@@ -6,18 +6,28 @@ import moment from "moment";
 import { getAppointments } from "../../api";
 const CardCalendarWorkouts = () => {
   const [workouts, setWorkouts] = useState([]);
+  const [showMenu, setShowMenu] = useState(null);
   const today = moment();
+
+
   useEffect(() => {
     const fetchData = async () => {
       if (authStore.token) {
         const filter = {
-          from: moment(today).toISOString(),
-          size: 3,
+          from: moment(today).startOf("day").toISOString(),
+          size: 20,
           page: 0,
         };
         try {
           const response = await getAppointments(filter);
-          setWorkouts(response.content);
+          const sortedWorkouts = response.content
+            .filter((workout) =>
+              moment(workout.startOfAppointment).isSameOrAfter(today)
+            )
+            .sort((a, b) =>
+              moment(a.startOfAppointment).diff(moment(b.startOfAppointment))
+            );
+          setWorkouts(sortedWorkouts);
         } catch (error) {
           console.log("error", error);
         }
@@ -26,11 +36,26 @@ const CardCalendarWorkouts = () => {
 
     fetchData();
   }, []);
+
+  const handleClick = (id) => {
+    setShowMenu(showMenu === id ? null : id);
+  };
   return (
     <div className={"flex flex-column gap-20"}>
-      {workouts.map((item) => (
+      {workouts.map((item, id) => (
         <div className={"card card_calendar_workouts"}>
-          <div className="right_conor">...</div>
+          <div className="right_conor" onClick={() => handleClick(id)}>
+            ...
+          </div>
+          {showMenu === id && (
+            <div className="menu">
+              <button onClick={() => console.log("Перенести")}>
+                Перенести
+              </button>
+              <button onClick={() => console.log("Отменить")}>Отменить</button>
+              <button onClick={() => console.log("Начать")}>Начать</button>
+            </div>
+          )}
           <div className={"flex gap-5 alignC "}>
             <Icon name={"small_calendar"} />
             <div className="text">
@@ -38,10 +63,11 @@ const CardCalendarWorkouts = () => {
               {moment(item.endOfAppointment).format("HH:mm")}
             </div>
           </div>
+          <div className="text">Тренировка с {item.clientName}</div>
           <div className="text">
-            Тренировка с {item.clientName}
+            {item.type} Тренировка{" "}
+            {moment(item.startOfAppointment).format("D MMMM")}
           </div>
-          <div className="text">{item.type} Тренировка</div>
         </div>
       ))}
     </div>

@@ -1,3 +1,28 @@
 .card_calendar_workouts {
   position: relative;
+
+  .right_conor {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+
+  .menu {
+    position: absolute;
+    border-radius: 15px;
+    right: 0;
+    top: 40px;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1;
+
+    button {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+  }
 }

@@ -5,11 +5,17 @@ import CardSubscription from "../../components/card-subscription";
 import Transactions from "../../components/transactions ";
 
 import "./style.scss";
+import Hamburger from "../../components/hamburger";
 const Payment = () => {
   const [role, setRole] = useState("payment");
   return (
     <div className="container_mobile back_ground pay">
-      <div className="payment_title">Платежи</div>
+      <div className={"flex alignC justify-s"}>
+        <Hamburger />
+        <div className="payment_title">Платежи</div>
+        <div />
+      </div>
+
       <div className="payment_text">
         Страница платежей предоставляет обзор ваших заработков и истории
         платежей.
@@ -47,7 +53,7 @@ const Payment = () => {
             </div>
           </div>
           <Transactions />
-          <div className={"name"}>Годовой финансовый отчет</div>
+          {/*<div className={"name"}>Годовой финансовый отчет</div>*/}
         </>
       ) : (
         <>

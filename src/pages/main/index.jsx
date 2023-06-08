@@ -1,16 +1,15 @@
 import React, { useState } from "react";
+import { observer } from "mobx-react";
+import moment from "moment";
 
 import Header from "../../components/header";
-import moment from "moment";
 import CardInfo from "../../components/card-info";
 import CalendarWeek from "../../components/calendar-week";
 import CardStatistics from "../../components/statistics";
 import CardInvite from "../../components/card-invite";
+import userStore from "../../store/user";
 
 import "./style.scss";
-import userStore from "../../store/user";
-import authStore from "../../store/auth";
-import { observer } from "mobx-react";
 
 const Main = observer(() => {
   const [activityStatus, setActivityStatus] = useState("Предстоящие");

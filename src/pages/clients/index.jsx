@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { Input } from "antd";
 import Icon from "../../components/icon";
@@ -8,36 +8,19 @@ import authStore from "../../store/auth";
 import moment from "moment";
 import { getClientsList } from "../../api";
 import Hamburger from "../../components/hamburger";
+import listUsers from "../../store/listUsers";
+import { observer } from "mobx-react";
 
-const ClientList = () => {
+const ClientList = observer(() => {
   const [search, setSearch] = useState("");
-  const [list, setList] = useState([]);
-  const today = moment();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (authStore.token) {
-        const filter = {
-          from: moment(today).toISOString(),
-          size: 3,
-          page: 0,
-        };
-        try {
-          const response = await getClientsList(filter);
-          console.log("response", response);
-          setList(response.content);
-        } catch (error) {
-          console.log("error", error);
-        }
-      }
-    };
+  let filteredList = [];
 
-    fetchData();
-  }, []);
-
-  const filteredList = list.filter((item) =>
-    item.userName?.toLowerCase().includes(search.toLowerCase())
-  );
+  if (listUsers.users) {
+    filteredList = listUsers.users.filter((item) =>
+      item.userName?.toLowerCase().includes(search.toLowerCase())
+    );
+  }
 
   return (
     <div className={"back_ground client container_mobile"}>
@@ -51,9 +34,9 @@ const ClientList = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      {filteredList.map((item) => (
+      {filteredList.map((item, id) => (
         <NavLink to={`/client/${item.id}`} className="nav">
-          <div className="card_client">
+          <div className="card_client" key={id}>
             <div>
               <Icon name={"big_calendar"} />
             </div>
@@ -71,6 +54,6 @@ const ClientList = () => {
       ))}
     </div>
   );
-};
+});
 
 export default ClientList;

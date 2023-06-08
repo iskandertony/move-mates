@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Calendar } from "react-calendar";
 import moment from "moment";
 
@@ -7,21 +7,46 @@ import Icon from "../icon";
 import "moment/locale/ru";
 import "./style.scss";
 import "react-calendar/dist/Calendar.css";
+import authStore from "../../store/auth";
+import { getAppointments } from "../../api";
 
 const MyCalendar = () => {
   const [date, setDate] = React.useState(new Date());
   const [slotsLoading, setSlotsLoading] = useState(true);
   const [slots, setSlots] = useState({});
-  const trainings = ["2023-05-30", "2023-06-01"].map((date) =>
-    moment(date).format("YYYY-MM-DD")
-  );
+  const [trainings, setTrainings] = useState([]);
+  const today = moment();
 
-  function tileContent({ date, view }) {
+  useEffect(() => {
+    const fetchData = async () => {
+      if (authStore.token) {
+        const filter = {
+          from: moment(today).toISOString(),
+          size: 20,
+          page: 0,
+        };
+        try {
+          const response = await getAppointments(filter);
+          const trainingDates = response.content.map((item) =>
+            moment(item.startOfAppointment).format("YYYY-MM-DD")
+          );
+          setTrainings(trainingDates);
+        } catch (error) {
+          console.log("error", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  function tileContent({ date }) {
     const formatDate = moment(date).format("YYYY-MM-DD");
     if (trainings.includes(formatDate)) {
       return <div style={{ color: "red" }}>•</div>;
     }
   }
+
   // const tileDisabled = (props) => {
   //     const { date, view } = props
   //     if (view !== 'month') {

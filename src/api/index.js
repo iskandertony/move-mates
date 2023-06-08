@@ -47,16 +47,16 @@ export async function getAppointments(filter) {
     "GET",
     null,
     null,
-    filter  //TODO почему как парамс ?
+    filter //TODO почему как парамс ?
   );
 }
 
 export async function getClientsList(filter) {
   return request(
-      `/api/coaches/clients`,
-      "GET",
-      null,
-      null,
-      filter  //TODO почему как парамс ?
+    `/api/coaches/clients`,
+    "GET",
+    null,
+    null,
+    filter
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import Hamburger from "../../components/hamburger";
 import { Input } from "antd";
 import Icon from "../../components/icon";
-import "./style.scss"
+import "./style.scss";
 const Chat = () => {
   const arr = [
     {
@@ -22,22 +22,22 @@ const Chat = () => {
       </div>
       <Input />
       <div className={"flex flex-column gap-20"}>
-      {arr.map((item) => (
-        <div className={"flex alignC justify-s"}>
-          <div className={"flex alignC gap-10"}>
-            <Icon name={"big_calendar"} />
+        {arr.map((item) => (
+          <div className={"flex alignC justify-s"}>
+            <div className={"flex alignC gap-10"}>
+              <Icon name={"big_calendar"} />
+              <div>
+                <div className={"title"}>{item.name}</div>
+                <div className={"text"}>last sms</div>
+              </div>
+            </div>
+
             <div>
-              <div className={"title"}>{item.name}</div>
-              <div className={"text"}>last sms</div>
+              <div className={"text"}>last time sms</div>
+              <div className={"text"}>is read?</div>
             </div>
           </div>
-
-          <div>
-            <div className={"text"}>last time sms</div>
-            <div className={"text"}>is read?</div>
-          </div>
-        </div>
-      ))}
+        ))}
       </div>
     </div>
   );

@@ -50,22 +50,22 @@ const Transactions = () => {
           <div>+2000 сом</div>
         </div>
       ))}
-      <div className="name">Статистика</div>
-      <div className="card_stats">
-        <div className={"stats"}>
-          <div>География клиентов</div>
-          <div>Страна</div>
-        </div>
-        <div className="countries">
-          {countries.map((item, index) => (
-            <CountryProgress
-              key={index}
-              country={item.country}
-              percent={item.percent}
-            />
-          ))}
-        </div>
-      </div>
+      {/*<div className="name">Статистика</div>*/}
+      {/*<div className="card_stats">*/}
+      {/*  <div className={"stats"}>*/}
+      {/*    <div>География клиентов</div>*/}
+      {/*    <div>Страна</div>*/}
+      {/*  </div>*/}
+      {/*  <div className="countries">*/}
+      {/*    {countries.map((item, index) => (*/}
+      {/*      <CountryProgress*/}
+      {/*        key={index}*/}
+      {/*        country={item.country}*/}
+      {/*        percent={item.percent}*/}
+      {/*      />*/}
+      {/*    ))}*/}
+      {/*  </div>*/}
+      {/*</div>*/}
     </div>
   );
 };
