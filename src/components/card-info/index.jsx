@@ -1,40 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Icon from "../icon";
 import "./style.scss";
 import { Button } from "antd";
 import moment from "moment";
-import authStore from "../../store/auth";
-import { getAppointments } from "../../api";
+
+import listAppointments from "../../store/getAppointments";
 const CardInfo = (props) => {
   const { selectedDate } = props;
-  const [info, setInfo] = useState([]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (authStore.token) {
-        const filter = {
-          from: moment(selectedDate).toISOString(),
-          size: 20,
-          page: 0,
-        };
-        try {
-          const response = await getAppointments(filter);
-          // console.log("response", response);
-          setInfo(response.content);
-        } catch (error) {
-          console.log("error", error);
-        }
-      }
-    };
-
-    fetchData();
-  }, [selectedDate]);
-
-  const today = moment().startOf("day");
-  let filteredCards = info;
+  let filteredCards = listAppointments.appointments;
 
   if (selectedDate) {
-    filteredCards = info.filter((item) =>
+    filteredCards = listAppointments.appointments.filter((item) =>
       moment(item.startOfAppointment).isSame(selectedDate, "day")
     );
   }
@@ -51,9 +28,9 @@ const CardInfo = (props) => {
             <div className="text">
               <div className="name">{item.clientName}</div>
               <div className="flex gap-5">
-                <div className="level">{item.level}</div>
-                <div className="level">{item.format}</div>
-                <div className="level">{item.status}</div>
+                <div className="level">{item.type}</div>
+                <div className="level">•{item.clientId}•</div>
+                <div className="level">{item.description}</div>
               </div>
             </div>
           </div>
@@ -73,7 +50,7 @@ const CardInfo = (props) => {
                 {moment(item.endOfAppointment).format("HH:mm")}
               </div>
             </div>
-            <Button>Начать тренировку</Button>
+            <Button className={"button_color"}>Начать тренировку</Button>
           </div>
         </div>
       ))}

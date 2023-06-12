@@ -1,15 +1,15 @@
 import { autorun, makeAutoObservable, reaction, runInAction } from "mobx";
 import authStore from "./auth";
 import moment from "moment/moment";
-import { getClientsList } from "../api";
+import { getAppointments, getClientsList } from "../api";
 
-function createListUsersStore() {
+function createAppointmentsStore() {
   const today = moment();
   let store = {
-    users: [],
+    appointments: [],
     usersLoading: false,
 
-    async fetchListUsers() {
+    async fetchAppointments() {
       try {
         if (authStore?.token) {
           runInAction(() => {
@@ -20,9 +20,9 @@ function createListUsersStore() {
             size: 20,
             page: 0,
           };
-          const response = await getClientsList(filter);
+          const response = await getAppointments(filter);
           runInAction(() => {
-            store.users = response?.content;
+            store.appointments = response?.content;
           });
         }
       } catch (error) {
@@ -43,13 +43,13 @@ function createListUsersStore() {
   // );
 
   autorun(() => {
-    if (authStore?.token) store.fetchListUsers();
+    if (authStore?.token) store.fetchAppointments();
   });
 
   makeAutoObservable(store);
   return store;
 }
 
-const listUsers = createListUsersStore();
+const listAppointments = createAppointmentsStore();
 
-export default listUsers;
+export default listAppointments;

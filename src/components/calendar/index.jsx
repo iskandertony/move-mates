@@ -3,49 +3,43 @@ import { Calendar } from "react-calendar";
 import moment from "moment";
 
 import Icon from "../icon";
-
-import "moment/locale/ru";
-import "./style.scss";
-import "react-calendar/dist/Calendar.css";
 import authStore from "../../store/auth";
 import { getAppointments } from "../../api";
 
-const MyCalendar = () => {
+import "moment/locale/ru";
+import "react-calendar/dist/Calendar.css";
+import "./style.scss";
+import listAppointments from "../../store/getAppointments";
+import { observer } from "mobx-react";
+const MyCalendar = observer(() => {
   const [date, setDate] = React.useState(new Date());
   const [slotsLoading, setSlotsLoading] = useState(true);
   const [slots, setSlots] = useState({});
-  const [trainings, setTrainings] = useState([]);
-  const today = moment();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      if (authStore.token) {
-        const filter = {
-          from: moment(today).toISOString(),
-          size: 20,
-          page: 0,
-        };
-        try {
-          const response = await getAppointments(filter);
-          const trainingDates = response.content.map((item) =>
-            moment(item.startOfAppointment).format("YYYY-MM-DD")
-          );
-          setTrainings(trainingDates);
-        } catch (error) {
-          console.log("error", error);
-        }
-      }
-    };
-
-    fetchData();
-  }, []);
+  let trainings = [];
 
   function tileContent({ date }) {
-    const formatDate = moment(date).format("YYYY-MM-DD");
-    if (trainings.includes(formatDate)) {
-      return <div style={{ color: "red" }}>•</div>;
+    if (listAppointments.appointments) {
+      trainings = listAppointments.appointments.map((item) =>
+        moment(item.startOfAppointment).format("YYYY-MM-DD")
+      );
+      const formatDate = moment(date).format("YYYY-MM-DD");
+      if (trainings.includes(formatDate)) {
+        return (
+          <div className={"dot"}>
+            <p>•</p>
+          </div>
+        );
+      }
     }
   }
+
+  // function tileClassName({ date }) {
+  //   const formatDate = moment(date).format("YYYY-MM-DD");
+  //   if (trainings.includes(formatDate)) {
+  //     return "highlight";
+  //   }
+  // }
 
   // const tileDisabled = (props) => {
   //     const { date, view } = props
@@ -57,20 +51,24 @@ const MyCalendar = () => {
   //     }
   //     return !slots[date.getMonth()][date.getDate()]?.length
   // }
+
+  console.log("train?", trainings);
+
   return (
-    <div className=" schedule">
+    <div className="schedule">
       <Calendar
         startAccessor="start"
         endAccessor="end"
         // tileDisabled={tileDisabled}
         date={date}
         locale="ru-RU"
-        tileContent={tileContent}
+        // tileClassName={tileClassName}
+        tileContent={listAppointments.appointments && tileContent}
         // maxDate={new Date(new Date().setDate(new Date().getDate() + 14))} todo это при броне
         // minDate={new Date(new Date().setDate(new Date().getDate()))}
       />
     </div>
   );
-};
+});
 
 export default MyCalendar;

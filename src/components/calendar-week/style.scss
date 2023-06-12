@@ -11,26 +11,24 @@
     align-items: center;
     min-width: 40px;
     height: 60px;
-    background: #3f6288;
+    background: var(--color-secondary-white);
     box-shadow: 0px 4px 10px rgba(0, 115, 204, 0.26);
     border-radius: 18px;
 
-    &.today {
-      background: blue;
-    }
-
     .calendar-day-number,
     .calendar-day-name {
-      color: #fff;
+      color: var(--color-secondary-300);
       font-size: 12px;
     }
   }
 
-  .calendar-day.selected {
-    background-color: darkblue;
-  }
-
+  .calendar-day.selected,
   .calendar-day.today {
-    background-color: blue;
+    background-color: var(--color-secondary-300);
+
+    .calendar-day-number,
+    .calendar-day-name {
+      color: white;
+    }
   }
 }

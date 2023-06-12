@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import { Input } from "antd";
+import {Input, Spin} from "antd";
 
 import Icon from "../../components/icon";
 import { NavLink } from "react-router-dom";
@@ -21,6 +21,8 @@ const ClientList = observer(() => {
     );
   }
 
+  if (listUsers.usersLoading) return <Spin/>
+
   return (
     <div className={"back_ground client container_mobile"}>
       <div className={"flex alignC justify-s"}>
@@ -33,9 +35,10 @@ const ClientList = observer(() => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      {filteredList.map((item, id) => (
-        <NavLink to={`/client/${item.id}`} className="nav">
-          <div className="card_client" key={id}>
+        {listUsers.usersLoading && <Spin/>}
+      {!listUsers.usersLoading && filteredList.map((item, id) => (
+        <NavLink key={id} to={`/client/${item.id}`} className="nav">
+          <div className="card_client" >
             <div>
               <Icon name={"big_calendar"} />
             </div>

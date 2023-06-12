@@ -10,9 +10,9 @@ import App from "./App";
 
 import "./style/index.scss";
 import "./style/custom-bootstrap.scss";
-import listUsers from "./store/listUsers";
 
 const queryClient = new QueryClient();
+
 ReactDOM.render(
   <QueryClientProvider client={queryClient}>
     <Provider authStore={authStore}>

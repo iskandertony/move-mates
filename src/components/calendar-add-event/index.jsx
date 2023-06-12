@@ -16,24 +16,20 @@ import listUsers from "../../store/listUsers";
 
 import "./style.scss";
 
+import { observer } from "mobx-react";
+
 const { TextArea } = Input;
 
-const CalendarAddEvent = (params) => {
+const CalendarAddEvent = observer((params) => {
   const { setShow } = params;
-  const [clientList, setClientList] = useState([]);
   const [selectedClient, setSelectedClient] = useState(null);
 
-  useEffect(() => {
-    if (!listUsers.loading) {
-      setClientList(listUsers.users);
-    }
-  }, []);
-
   const onSearch = (searchText) => {
-    const filteredList = clientList.filter((item) =>
-      item.userName?.toLowerCase().includes(searchText.toLowerCase())
+    listUsers.users = listUsers.users.filter(
+      (
+        item // TODO не правильно сделал, при клике на юзера выбирается юзер и после его удаления список остается только с 1 юзером которого кликнул
+      ) => item.userName?.toLowerCase().includes(searchText.toLowerCase())
     );
-    setClientList(filteredList);
   };
 
   const onSelect = (value, option) => {
@@ -66,7 +62,6 @@ const CalendarAddEvent = (params) => {
     } catch (error) {
       console.log("Error while trying to login:", error);
     }
-
     setShow(false);
   };
 
@@ -87,10 +82,13 @@ const CalendarAddEvent = (params) => {
           rules={[{ required: true, message: "Please select a date!" }]}
         >
           <AutoComplete
-            options={clientList.map((client) => ({
-              value: client.userName,
-              key: client.id,
-            }))}
+            options={
+              listUsers.users &&
+              listUsers.users.map((client) => ({
+                value: client.userName,
+                key: client.id,
+              }))
+            }
             style={{ width: "100%" }}
             onSelect={onSelect}
             onSearch={onSearch}
@@ -151,6 +149,6 @@ const CalendarAddEvent = (params) => {
       </Form>
     </div>
   );
-};
+});
 
 export default CalendarAddEvent;

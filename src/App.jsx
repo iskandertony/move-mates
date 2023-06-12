@@ -1,17 +1,12 @@
 import React from "react";
-
 import { Route, Routes } from "react-router-dom";
+import { routing } from "./routing";
 
 import Footer from "./components/footer";
-
-import { routing } from "./routing";
-import useTokenHook from "./hooks/use-token-hook";
-import axios from "axios";
-
 function App() {
-    // const { token } = useTokenHook();
-    //
-    // axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+
+
   return (
     <main className="app">
       <Routes>

@@ -1,7 +1,6 @@
 import WelcomePage from "../pages/welcome-page";
 import Login from "../components/login";
 import Register from "../components/register";
-import Main from "../pages/main";
 import Payment from "../pages/payment";
 import ClientList from "../pages/clients";
 import ClientDetails from "../pages/clients-details";
@@ -12,6 +11,10 @@ import ResetPassword from "../pages/password-reset";
 import ValidatePassword from "../pages/password-validate";
 import ConfirmPassword from "../pages/password-confirm";
 import Notifications from "../pages/notifications";
+import ChatDetails from "../pages/chat-details";
+import Profile from "../pages/profile";
+import CoachMain from "../pages/coach-main";
+import Main from "../pages/main";
 export const routing = {
   welcomePage: {
     path: "/dashboard",
@@ -31,7 +34,13 @@ export const routing = {
     protected: false,
     role: "all",
   },
-  main: {
+  CoachMain: {
+    path: "/coach",
+    element: <CoachMain />, //
+    protected: false,
+    role: "all",
+  },
+  Main: {
     path: "/main",
     element: <Main />, //
     protected: false,
@@ -70,13 +79,25 @@ export const routing = {
     role: "all",
   },
 
+  SettingsProfile: {
+    path: "/settings/profile",
+    element: <Profile />,
+    protected: false,
+    role: "all",
+  },
+
   Chat: {
     path: "/chat",
     element: <Chat />, //
     protected: false,
     role: "all",
   },
-
+  chatDetails: {
+    path: "/chat/:id",
+    element: <ChatDetails />, //
+    protected: false,
+    role: "all",
+  },
   Reset: {
     path: "/accounts/password/reset",
     element: <ResetPassword />, //

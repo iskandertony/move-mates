@@ -1,49 +1,43 @@
 import React, { useEffect, useState } from "react";
+import { Spin } from "antd";
 import Icon from "../icon";
 import "./style.scss";
 import authStore from "../../store/auth";
 import moment from "moment";
+
 import { getAppointments } from "../../api";
-const CardCalendarWorkouts = () => {
-  const [workouts, setWorkouts] = useState([]);
+import listAppointments from "../../store/getAppointments";
+import {observer} from "mobx-react";
+const CardCalendarWorkouts = observer(() => {
   const [showMenu, setShowMenu] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const today = moment();
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      if (authStore.token) {
-        const filter = {
-          from: moment(today).startOf("day").toISOString(),
-          size: 20,
-          page: 0,
-        };
-        try {
-          const response = await getAppointments(filter);
-          const sortedWorkouts = response.content
-            .filter((workout) =>
-              moment(workout.startOfAppointment).isSameOrAfter(today)
-            )
-            .sort((a, b) =>
-              moment(a.startOfAppointment).diff(moment(b.startOfAppointment))
-            );
-          setWorkouts(sortedWorkouts);
-        } catch (error) {
-          console.log("error", error);
-        }
-      }
-    };
-
-    fetchData();
-  }, []);
+  let workouts = [];
+  if (listAppointments.appointments) {
+    workouts = listAppointments.appointments
+      .filter((workout) =>
+        moment(workout.startOfAppointment).isSameOrAfter(today)
+      )
+      .sort((a, b) =>
+        moment(a.startOfAppointment).diff(moment(b.startOfAppointment))
+      );
+  }
 
   const handleClick = (id) => {
     setShowMenu(showMenu === id ? null : id);
   };
+
+  if (isLoading)
+    return (
+      <div className={"flex flex-column gap-20"}>
+        <Spin />
+      </div>
+    );
+
   return (
     <div className={"flex flex-column gap-20"}>
       {workouts.map((item, id) => (
-        <div className={"card card_calendar_workouts"}>
+        <div className={"card card_calendar_workouts"} key={id}>
           <div className="right_conor" onClick={() => handleClick(id)}>
             ...
           </div>
@@ -72,6 +66,6 @@ const CardCalendarWorkouts = () => {
       ))}
     </div>
   );
-};
+});
 
 export default CardCalendarWorkouts;

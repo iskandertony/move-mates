@@ -8,6 +8,7 @@ import ModalCalendar from "../../components/modal-wrapper-calendar";
 import CalendarAddEvent from "../../components/calendar-add-event";
 const Schedule = () => {
   const [show, setShow] = useState(false);
+
   return (
     <>
       <div className="container_mobile back_ground flex flex-column gap-20">

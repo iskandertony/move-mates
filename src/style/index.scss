@@ -47,6 +47,7 @@ button {
     font-size: 0.6rem;
   }
 }
+
 b {
   font-weight: 600;
 }
@@ -83,9 +84,6 @@ h4 {
   font-size: 0.9rem;
 }
 
-.test {
-  background: var(--palette-secondary-100);
-}
 .container {
   width: 90%;
   max-width: 1216px;
@@ -99,17 +97,17 @@ h4 {
     width: calc(100% - 40px);
   }
 }
-.custom-toast {
-  border-radius: 12px;
-  z-index: 1000;
-  .Toastify__progress-bar {
-    background: var(--palette-light-violet-600);
-  }
-}
-.Toastify__toast-container {
-  top: 4em !important;
-  z-index: 10001;
-}
+//.custom-toast {
+//  border-radius: 12px;
+//  z-index: 1000;
+//  .Toastify__progress-bar {
+//    background: var(--palette-light-violet-600);
+//  }
+//}
+//.Toastify__toast-container {
+//  top: 4em !important;
+//  z-index: 10001;
+//}
 
 //// DatePicker styles
 .react-datepicker__day--keyboard-selected {
@@ -160,17 +158,16 @@ h4 {
   font-weight: 600;
   font-size: 14.3087px;
   line-height: 145%;
-  color: var(--color-secondary-200);
+  color: var(--color-secondary-black);
 }
 
 .name {
-
   font-family: 'Montserrat',sans-serif;
   font-style: normal;
   font-weight: 600;
   font-size: 18px;
   line-height: 145%;
-  color: var(--color-secondary-200);
+  color: var(--color-secondary-black);
 }
 
 .text {
@@ -179,7 +176,7 @@ h4 {
   font-weight: 400;
   font-size: 13.2081px;
   line-height: 145%;
-  color: var(--color-secondary-200);
+  color: var(--color-secondary-black);
 }
 
 .subscription {
@@ -194,10 +191,14 @@ h4 {
   padding: 20px;
   border-radius: 20px;
   border: 1px solid var(--color-secondary-100);
-  background-color: var(--color-secondary-100);
+  background-color: var(--color-secondary-white);
 }
 
 .right_conor {
   position: absolute;
   right: 10px;
+}
+
+.button_color {
+background-color: var(--color-secondary-green);
 }

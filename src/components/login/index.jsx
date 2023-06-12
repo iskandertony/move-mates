@@ -21,8 +21,8 @@ const Login = inject("authStore")(
     const [error, setError] = useState(false);
     const handleSubmit = async (values) => {
       const payload = {
-        username: values?.email, //'admin@move-mates.com',
-        password: values?.password, //'1q2w3e!Q@W#E'
+        username: values?.email,
+        password: values?.password,
       };
       try {
         const response = await login(payload);

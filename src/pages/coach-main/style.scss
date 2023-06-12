@@ -1,0 +1,47 @@
+@keyframes fadeInScale {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .background-color {
+    background-color: var(--color-secondary-200);
+  }
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 33%;
+    padding: 10px 2px;
+    transition: all 0.3s ease;
+  }
+
+  .title.active {
+    animation: fadeInScale 0.3s ease forwards;
+  }
+
+  .tabs {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-secondary-200);
+    border-radius: 10px;
+    padding: 2px 20px;
+  }
+
+  .active {
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+    background-color: var(--color-secondary-300);
+  }
+}
