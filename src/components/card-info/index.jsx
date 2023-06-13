@@ -1,16 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "../icon";
 import "./style.scss";
 import { Button } from "antd";
 import moment from "moment";
 
 import listAppointments from "../../store/getAppointments";
+import CardAdd from "../card-add";
 const CardInfo = (props) => {
   const { selectedDate } = props;
+  const [show, setShow] = useState(false);
 
   let filteredCards = listAppointments.appointments;
 
-  if (selectedDate) {
+  if (listAppointments.appointments) {
     filteredCards = listAppointments.appointments.filter((item) =>
       moment(item.startOfAppointment).isSame(selectedDate, "day")
     );
@@ -19,6 +21,12 @@ const CardInfo = (props) => {
   filteredCards.sort((a, b) => moment(b.calendar).diff(moment(a.calendar)));
   return (
     <div className="card_info">
+      {!filteredCards.length && (
+        <CardAdd
+          title={"Добавьте новую встречу"}
+          onClick={() => setShow(true)}
+        />
+      )}
       {filteredCards.map((item) => (
         <div className="card_info_container">
           <div className="card_info_status right_conor">Скоро</div>

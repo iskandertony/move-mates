@@ -35,7 +35,6 @@ function Register() {
     if (response?.status === 200) {
       setErrors([]);
       userStore.setRole(response.data?.loginResponse?.roles[0]);
-      setToken(response?.data?.loginResponse?.token);
       authStore.setToken(response?.data?.loginResponse?.token);
       navigate("/main");
       return;
@@ -44,7 +43,7 @@ function Register() {
     }
   };
   return (
-    <div className="container_mobile register">
+    <div className="container_mobile register ">
       <ArrowBack />
       <div className="register_title">Создать учетную запись</div>
       <div className="register_text">

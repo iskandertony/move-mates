@@ -1,11 +1,15 @@
 .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   display: flex;
   justify-content: space-between;
-  padding-top: 10px ;
-  padding-bottom: 30px ;
+  padding-top: 10px;
+  padding-bottom: 30px;
   width: 100%;
   margin-top: 20px;
   background-color: var(--color-secondary-white);
+  z-index: 10;
   .footer_button {
     margin: 0 10px;
   }
@@ -17,4 +21,3 @@
     justify-content: center;
   }
 }
-

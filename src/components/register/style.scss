@@ -1,12 +1,14 @@
 .register {
   padding-top: 40px;
+
+  padding-bottom: 120px;
   .register_title {
     font-family: "Montserrat", sans-serif;
     font-style: normal;
     font-weight: 600;
     font-size: 26px;
     line-height: 110%;
-    color: var(--color-secondary-200);
+    color: var(--color-secondary-title);
     margin-top: 20px;
   }
   .register_text {
@@ -16,7 +18,7 @@
     font-size: 14px;
     line-height: 145%;
     margin-top: 5px;
-    color: var(--color-secondary-200);
+    color: var(--color-secondary-text);
   }
   .role-selection {
     margin-top: 40px;
@@ -68,7 +70,7 @@
       font-size: 15px;
       line-height: 145%;
 
-      color: var(--color-secondary-200);
+      color: var(--color-secondary-title);
     }
     .ant-form-item {
       margin-bottom: 0;
@@ -120,7 +122,7 @@
       padding-top: 15px;
       padding-bottom: 15px;
       background-color: var(--color-secondary-400);
-      color: var(--color-secondary-100);
+      color: var(--color-secondary-title);
     }
 
     .react-tel-input .form-control {
@@ -135,7 +137,7 @@
       border-top: 0;
       border-left: 0;
       border-radius: unset;
-      background-color: var(--color-secondary-100);
+      background-color: var(--color-secondary-white);
     }
   }
 }

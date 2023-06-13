@@ -16,7 +16,7 @@
     background-color: var(--color-secondary-200);
   }
 
-  .title {
+  .tabs_title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,7 +25,7 @@
     transition: all 0.3s ease;
   }
 
-  .title.active {
+  .tabs_title.active {
     animation: fadeInScale 0.3s ease forwards;
   }
 

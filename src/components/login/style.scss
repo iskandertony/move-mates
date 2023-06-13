@@ -8,7 +8,7 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 110%;
-    color: var(--color-secondary-200);
+    color: var(--color-secondary-title);
   }
 
   .login_text {
@@ -22,7 +22,7 @@
     display: flex;
     align-items: center;
 
-    color: var(--color-secondary-200);
+    color: var(--color-secondary-text);
   }
 
   .alert {
@@ -38,7 +38,7 @@
       font-size: 13px;
       line-height: 145%;
 
-      color: var(--color-secondary-200);
+      color: var(--color-secondary-title);
     }
 
     .text {
@@ -73,7 +73,7 @@
       padding-top: 15px;
       padding-bottom: 15px;
       background-color: var(--color-secondary-400);
-      color: var(--color-secondary-100);
+      color: var(--color-secondary-text);
     }
 
     .input {
@@ -101,19 +101,17 @@
     line-height: 125%;
     gap: 4px;
     margin-top: 20px;
-    color: var(--color-secondary-200);
+    color: var(--color-secondary-text);
     .register_title {
       font-family: "Montserrat", sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 14px;
       line-height: 125%;
-      /* identical to box height, or 18px */
-
       display: flex;
       align-items: flex-end;
 
-      color: var(--color-secondary-200);
+      color: var(--color-secondary-text);
     }
   }
 }

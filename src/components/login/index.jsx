@@ -28,7 +28,6 @@ const Login = inject("authStore")(
         const response = await login(payload);
         if (response && response?.status === 200) {
           userStore.setRole(response.data?.roles[0]);
-          setToken(response?.data?.token);
           authStore.setToken(response?.data?.token);
           navigate("/main");
           return;

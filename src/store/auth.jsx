@@ -6,6 +6,7 @@ function createAuthStore() {
   let store = {
     token: sessionStorage.getItem("token"),
     setToken(token) {
+      sessionStorage.setItem("token", token);
       runInAction(() => {
         store.token = token;
       });
@@ -19,7 +20,7 @@ function createAuthStore() {
         return response;
       } catch (error) {
         console.error(error);
-        return error.response;;
+        return error.response;
       }
     },
   };

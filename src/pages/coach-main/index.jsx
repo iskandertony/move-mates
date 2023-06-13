@@ -37,14 +37,16 @@ const CoachMain = observer(() => {
       <CalendarWeek onDayClick={setSelectedDate} selectedDate={selectedDate} />
 
       <div className="flex tabs background-color gap-10 justify-s">
-        {tabs.map((tab,index) => (
-            <div
-                key={index}
-                className={`title ${activityStatus === tab ? "active" : ""}`}
-                onClick={() => setActivityStatus(tab)}
-            >
-                {tab}
-            </div>
+        {tabs.map((tab, index) => (
+          <div
+            key={index}
+            className={`tabs_title title ${
+              activityStatus === tab ? "active" : ""
+            }`}
+            onClick={() => setActivityStatus(tab)}
+          >
+            {tab}
+          </div>
         ))}
       </div>
 
