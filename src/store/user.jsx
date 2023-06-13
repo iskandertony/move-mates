@@ -8,13 +8,6 @@ function createUserStore() {
     user: null,
     role: null,
 
-    // setUser(payload) {
-    //   runInAction(() => {
-    //     store.user = payload; TODO НУЖНА ЛИ ЭТА ФУНКЦИЯ ?
-    //     localStorage.setItem("user", JSON.stringify(payload));
-    //   });
-    // },
-
     setRole(role) {
       runInAction(() => {
         store.role = role;
@@ -43,7 +36,7 @@ function createUserStore() {
           });
         }
       } catch (error) {
-        console.error("Failed to fetch user:", error);
+        console.log("Failed to fetch user:", error);
       }
     },
     loadFromLocalStorage() {

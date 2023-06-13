@@ -1,0 +1,16 @@
+version: "3"
+services:
+  frontend-web:
+    image: web-1
+    ports:
+      - 80:80
+  move-mates-backend-web:
+    image: web-1
+    ports:
+      - 8086:8086
+    environment:
+      - .env.development
+  postgres:
+    image: postgres:13-alpine
+    ports:
+      - 5432:5432

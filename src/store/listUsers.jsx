@@ -1,4 +1,4 @@
-import { autorun, makeAutoObservable, reaction, runInAction } from "mobx";
+import { autorun, makeAutoObservable, runInAction } from "mobx";
 import authStore from "./auth";
 import moment from "moment/moment";
 import { getClientsList } from "../api";
@@ -15,11 +15,13 @@ function createListUsersStore() {
           runInAction(() => {
             store.usersLoading = true;
           });
+
           const filter = {
             from: moment(today).toISOString(),
             size: 20,
             page: 0,
           };
+
           const response = await getClientsList(filter);
           runInAction(() => {
             store.users = response?.content;
@@ -34,13 +36,6 @@ function createListUsersStore() {
       }
     },
   };
-
-  // reaction(
-  //   () => authStore?.token,
-  //   () => {
-  //     if (authStore?.token) store.fetchListUsers();
-  //   }
-  // );
 
   autorun(() => {
     if (authStore?.token) store.fetchListUsers();

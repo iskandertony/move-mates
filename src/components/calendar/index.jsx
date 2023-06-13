@@ -52,7 +52,7 @@ const MyCalendar = observer(() => {
   //     return !slots[date.getMonth()][date.getDate()]?.length
   // }
 
-  console.log("train?", trainings);
+
 
   return (
     <div className="schedule">

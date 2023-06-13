@@ -16,10 +16,6 @@ export const request = async (url, method, payload, formData, params) => {
       data: payload,
       params: params,
     });
-    // if (res.data && res.data.access) {
-    //   localStorage.setItem("token", res.data.access);
-    //   localStorage.setItem("userID", res.data.user_id);
-    // }
     return res.data;
   } catch (error) {
     const href = window.location.href;
@@ -30,9 +26,7 @@ export const request = async (url, method, payload, formData, params) => {
         document.location.href = "/login";
       }
     }
-    if (error?.response?.status === 404) {
-      // window.location.href = '/404'
-    }
+
     throw error;
   }
 };
@@ -52,11 +46,5 @@ export async function getAppointments(filter) {
 }
 
 export async function getClientsList(filter) {
-  return request(
-    `/api/coaches/clients`,
-    "GET",
-    null,
-    null,
-    filter
-  );
+  return request(`/api/coaches/clients`, "GET", null, null, filter);
 }

@@ -15,11 +15,13 @@ function createAppointmentsStore() {
           runInAction(() => {
             store.usersLoading = true;
           });
+
           const filter = {
             from: moment(today).toISOString(),
             size: 20,
             page: 0,
           };
+
           const response = await getAppointments(filter);
           runInAction(() => {
             store.appointments = response?.content;
@@ -34,13 +36,6 @@ function createAppointmentsStore() {
       }
     },
   };
-
-  // reaction(
-  //   () => authStore?.token,
-  //   () => {
-  //     if (authStore?.token) store.fetchListUsers();
-  //   }
-  // );
 
   autorun(() => {
     if (authStore?.token) store.fetchAppointments();
