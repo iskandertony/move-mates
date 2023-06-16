@@ -41,7 +41,7 @@ export async function getAppointments(filter) {
     "GET",
     null,
     null,
-    filter //TODO почему как парамс ?
+    filter
   );
 }
 
