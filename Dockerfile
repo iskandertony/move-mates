@@ -6,7 +6,9 @@ COPY . .
 
 RUN npm ci
 
-RUN npm run build
+ARG REACT_APP_BACKEND
+
+RUN REACT_APP_BACKEND_URL=$REACT_APP_BACKEND npm run build
 
 FROM nginx:1.24.0-alpine as production
 
