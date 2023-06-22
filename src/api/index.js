@@ -31,6 +31,19 @@ export const request = async (url, method, payload, formData, params) => {
   }
 };
 
+
+export async function login(data) {
+  return request(`/auth/login`, "POST", data);
+}
+
+export async function getUser(role) {
+  return request(`/api/${role}/me`, "GET");
+}
+
+export async function signUp(data, role) {
+  return request(`/auth/${role}/create`, "POST", data);
+}
+
 export async function createAppointments(data) {
   return request(`/api/coaches/appointments`, "POST", data);
 }
@@ -43,6 +56,10 @@ export async function getAppointments(filter) {
     null,
     filter
   );
+}
+
+export async function getClient(id) {
+  return request(`/api/coaches/clients/${id}`, "GET");
 }
 
 export async function getClientsList(filter) {

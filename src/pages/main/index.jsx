@@ -5,7 +5,7 @@ import ClientMain from "../clientMain";
 
 const Main = () => {
   return (
-    <div>{userStore.role === "COACH" ? <CoachMain /> : <ClientMain />}</div>
+    <div>{userStore.role === "coach" ? <CoachMain /> : <ClientMain />}</div>
   );
 };
 

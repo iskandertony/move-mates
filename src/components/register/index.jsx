@@ -5,22 +5,19 @@ import PhoneInput from "react-phone-input-2";
 
 import Icon from "../icon";
 import { useForm } from "antd/es/form/Form";
-import { useAuthHook } from "../../hooks/use-auth-hook";
-import useTokenHook from "../../hooks/use-token-hook";
+
 import userStore from "../../store/user";
 
 import "./style.scss";
-import "../../style/App.scss"; // todo зачем это тут ?
 import "react-phone-input-2/lib/style.css";
 import ArrowBack from "../arrow-back";
 import authStore from "../../store/auth";
+import { signUp } from "../../api";
 
 function Register() {
   const [role, setRole] = useState("client");
   const navigate = useNavigate();
   const [form] = useForm();
-  const { signUp } = useAuthHook();
-  const { setToken } = useTokenHook();
   const [errors, setErrors] = useState([]);
   const onFinish = async (values) => {
     const payload = {
@@ -32,10 +29,10 @@ function Register() {
     };
 
     const response = await signUp(payload, role);
-    if (response?.status === 200) {
+    if (response) {
       setErrors([]);
-      userStore.setRole(response.data?.loginResponse?.roles[0]);
-      authStore.setToken(response?.data?.loginResponse?.token);
+      userStore.setRole(role);
+      authStore.setToken(response?.loginResponse?.token);
       navigate("/main");
       return;
     } else {

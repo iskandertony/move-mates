@@ -12,13 +12,8 @@ const test = (params) => {
     const year = dateMoment.year();
     const startTime = values.time[0].date(date).month(month).year(year);
     const endTime = values.time[1].date(date).month(month).year(year);
-    console.log("startTime", startTime)
-    console.log("endTime", endTime)
     const startOfAppointment = startTime.toISOString();
     const endOfAppointment = endTime.toISOString();
-
-    console.log("corrent 1", startOfAppointment);
-    console.log("corrent 2", endOfAppointment);
   };
 
   return (

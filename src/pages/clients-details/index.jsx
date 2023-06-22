@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./style.scss";
 import Icon from "../../components/icon";
 import CardUserInfo from "../../components/card-user-info";
 import ArrowBack from "../../components/arrow-back";
+import { getClient } from "../../api";
+import { useParams } from "react-router-dom";
 
 const ClientDetails = () => {
+  const { id } = useParams();
+  const [clientData, setClientData] = useState(null);
   const currentYear = new Date().getFullYear();
   const train = [
     {
@@ -32,19 +36,29 @@ const ClientDetails = () => {
     },
   ];
 
-  // Find the upcoming training
+  useEffect(() => {
+    const fetchClientData = async () => {
+      if (id) {
+        const response = await getClient(id);
+        console.log("reposdf", response);
+        setClientData(response);
+      }
+    };
+
+    fetchClientData();
+  }, [id]);
+
   const upcomingTraining = train
     .filter((t) => t.date > new Date())
     .sort((a, b) => a.date - b.date)[0];
 
   return (
     <div className="client_details container_mobile back_ground">
-
       <div>
         <ArrowBack />
         <div className="flex alignC justify-c flex-column gap-5">
           <Icon name={"big_calendar"} />
-          <div className="name">Айдай</div>
+          <div className="name">{clientData?.name}</div>
           <div className="text">Средний</div>
         </div>
 
@@ -58,8 +72,8 @@ const ClientDetails = () => {
               <div className="title">
                 {upcomingTraining.date.toLocaleDateString()} |
               </div>
-              <div className="title">{upcomingTraining.time} |</div>
-              <div className="title">{upcomingTraining.status}</div>
+              <div className="title">{clientData.time} |</div>
+              <div className="title">{clientData.status}</div>
             </div>
           </div>
         )}
@@ -67,8 +81,8 @@ const ClientDetails = () => {
 
       <div className="content">
         <div>Тренировки на этой неделе</div>
-        {train.map((item) => (
-          <div className="card_clien_content card">
+        {train.map((item, id) => (
+          <div className="card_clien_content card" key={id}>
             <div className="flex gap-10 alignC">
               <Icon name={"calendar"} />{" "}
               <div className="text">{item.type} Traning</div>
@@ -83,8 +97,12 @@ const ClientDetails = () => {
         <div className="title">Осталось 5 тренировок</div>
       </div>
 
-       <CardUserInfo/>
-
+      <CardUserInfo
+        weight={clientData?.weight}
+        height={clientData?.height}
+        gender={clientData?.gender}
+        dateOfBirth={clientData?.dateOfBirth}
+      />
     </div>
   );
 };

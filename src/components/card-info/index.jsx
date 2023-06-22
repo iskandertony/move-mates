@@ -27,8 +27,8 @@ const CardInfo = (props) => {
           onClick={() => setShow(true)}
         />
       )}
-      {filteredCards.map((item) => (
-        <div className="card_info_container">
+      {filteredCards.map((item, id) => (
+        <div className="card_info_container" key={id}>
           <div className="card_info_status right_conor">Скоро</div>
           <div className="card_info_info">
             <Icon name={"big_profile"} className="profile" />

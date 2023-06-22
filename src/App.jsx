@@ -5,8 +5,6 @@ import { routing } from "./routing";
 import Footer from "./components/footer";
 function App() {
 
-
-
   return (
     <main className="app">
       <Routes>

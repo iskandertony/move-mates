@@ -2,6 +2,7 @@ import { makeAutoObservable, reaction, runInAction } from "mobx";
 import axios from "axios";
 import { BASE_API_URL } from "../helpers/api";
 import authStore from "./auth";
+import { getUser, signUp } from "../api";
 
 function createUserStore() {
   let store = {
@@ -22,17 +23,10 @@ function createUserStore() {
           if (lowercaseRole === "coach") {
             lowercaseRole += "es";
           }
-          const response = await axios.get(
-            `${BASE_API_URL}/api/${lowercaseRole}/me`,
-            {
-              headers: {
-                Authorization: `Bearer ${authStore?.token}`,
-              },
-            }
-          );
+          const response = await getUser(lowercaseRole);
           runInAction(() => {
-            store.user = response?.data;
-            localStorage.setItem("user", JSON.stringify(response?.data));
+            store.user = response;
+            localStorage.setItem("user", JSON.stringify(response));
           });
         }
       } catch (error) {

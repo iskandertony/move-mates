@@ -70,6 +70,15 @@
     }
   }
 
+  .title {
+    color: var(--color-secondary-100);
+  }
+
+  .card {
+    background-color: #FFDBCF;
+    opacity: 0.2;
+  }
+
   .card_info_info {
     display: flex;
     gap: 8px;

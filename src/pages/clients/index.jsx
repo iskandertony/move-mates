@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { observer } from "mobx-react";
-import {Input, Spin} from "antd";
+import { Input, Spin } from "antd";
 
 import Icon from "../../components/icon";
 import { NavLink } from "react-router-dom";
 import Hamburger from "../../components/hamburger";
 import listUsers from "../../store/listUsers";
-
 
 import "./style.scss";
 
@@ -21,7 +20,7 @@ const ClientList = observer(() => {
     );
   }
 
-  if (listUsers.usersLoading) return <Spin/>
+  if (listUsers.usersLoading) return <Spin />;
 
   return (
     <div className={"back_ground client container_mobile"}>
@@ -35,25 +34,26 @@ const ClientList = observer(() => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-        {listUsers.usersLoading && <Spin/>}
-      {!listUsers.usersLoading && filteredList.map((item, id) => (
-        <NavLink key={id} to={`/client/${item.id}`} className="nav">
-          <div className="card_client" >
-            <div>
-              <Icon name={"big_calendar"} />
+      {listUsers.usersLoading && <Spin />}
+      {!listUsers.usersLoading &&
+        filteredList.map((item, id) => (
+          <NavLink key={id} to={`/client/${item.id}`} className="nav">
+            <div className="card_client">
+              <div>
+                <Icon name={"big_calendar"} />
+              </div>
+              <div>
+                <div className="title">{item.userName}</div>
+                <div className="text">{item.level}</div>
+                <div className="text">{item.time}</div>
+              </div>
+              <div>
+                <div className="title">Осталось {item.size} тренировки</div>
+                <div className="text">{item.place}</div>
+              </div>
             </div>
-            <div>
-              <div className="title">{item.userName}</div>
-              <div className="text">{item.level}</div>
-              <div className="text">{item.time}</div>
-            </div>
-            <div>
-              <div className="title">Осталось {item.size} тренировки</div>
-              <div className="text">{item.place}</div>
-            </div>
-          </div>
-        </NavLink>
-      ))}
+          </NavLink>
+        ))}
     </div>
   );
 });
