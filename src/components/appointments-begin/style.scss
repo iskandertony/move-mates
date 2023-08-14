@@ -1,0 +1,10 @@
+.appointments_begin {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  .card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}

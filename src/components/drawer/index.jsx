@@ -8,6 +8,7 @@ import userStore from "../../store/user";
 import authStore from "../../store/auth";
 
 import "./style.scss";
+import Avatar from "../avatar";
 
 const DrawerMenu = observer(({ open, setOpen }) => {
   const [placement, setPlacement] = useState("left");
@@ -26,7 +27,7 @@ const DrawerMenu = observer(({ open, setOpen }) => {
       <Drawer
         title={
           <div className={"drawer_menu"}>
-            <Icon name={"profilecircle"} className={"icon"} />
+            <Avatar />
             <div className="name">{userStore.user?.userName}</div>
             <div className="title">Тренер</div>
           </div>

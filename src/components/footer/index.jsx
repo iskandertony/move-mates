@@ -34,7 +34,7 @@ const Footer = () => {
             className={"footer_button"}
           />
           <div className={activePage === "/client" ? "text_active" : "text"}>
-            {userStore.role === "COACH" ? "Клиенты" : "Тренеры"}
+            {userStore.role === "coach" ? "Клиенты" : "Тренеры"}
           </div>
         </div>
       </NavLink>

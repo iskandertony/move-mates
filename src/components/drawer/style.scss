@@ -1,4 +1,5 @@
 .drawer_menu {
+
   .ant-drawer-header {
     background-color: var(--color-secondary-400);
     padding-top: 50px;
@@ -52,4 +53,8 @@
       color:   var(--color-secondary-black);
     }
 }
+}
+
+.ant-drawer-content-wrapper {
+  box-shadow: none !important;
 }

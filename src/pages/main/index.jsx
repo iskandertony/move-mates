@@ -1,12 +1,13 @@
 import React from "react";
 import userStore from "../../store/user";
-import CoachMain from "../coach-main";
-import ClientMain from "../clientMain";
+import CoachMain from "../coach/coach-main";
+import ClientMain from "../client/clientMain";
+import { observer } from "mobx-react";
 
-const Main = () => {
+const Main = observer(() => {
   return (
-    <div>{userStore.role === "coach" ? <CoachMain /> : <ClientMain />}</div>
+    <div>{userStore.role === "coach" ? <CoachMain /> : <CoachMain />}</div>
   );
-};
+});
 
 export default Main;

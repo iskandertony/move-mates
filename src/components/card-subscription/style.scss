@@ -6,7 +6,7 @@
   .card_subscription_content {
     padding: 20px;
     border-radius: 15px;
-    background: var(--color-secondary-400);
+    background: var(--color-secondary-white);
 
     .info {
       display: flex;
@@ -19,7 +19,7 @@
         font-weight: 600;
         font-size: 16px;
         line-height: 20px;
-        color: var(--color-secondary-200);
+        color: var(--color-secondary-black);
       }
 
       .price {
@@ -28,7 +28,7 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 17px;
-        color: var(--color-secondary-500);
+        color: var(--color-secondary-black);
       }
     }
 
@@ -47,7 +47,7 @@
         font-size: 14px;
         line-height: 17px;
 
-        color: var(--color-secondary-200);
+        color: var(--color-secondary-black);
       }
     }
 

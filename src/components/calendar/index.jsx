@@ -52,8 +52,6 @@ const MyCalendar = observer(() => {
   //     return !slots[date.getMonth()][date.getDate()]?.length
   // }
 
-
-
   return (
     <div className="schedule">
       <Calendar

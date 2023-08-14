@@ -1,0 +1,37 @@
+.video_call {
+display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .video_content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .video_coach {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      border-radius: 8px;
+      height: 400px;
+    }
+
+    .video_client {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid black;
+      border-radius: 8px;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+    }
+  }
+
+
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

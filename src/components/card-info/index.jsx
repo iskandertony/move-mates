@@ -3,12 +3,22 @@ import Icon from "../icon";
 import "./style.scss";
 import { Button } from "antd";
 import moment from "moment";
-
+import { useNavigate } from "react-router-dom";
 import listAppointments from "../../store/getAppointments";
 import CardAdd from "../card-add";
-const CardInfo = (props) => {
+import { observer } from "mobx-react";
+const CardInfo = observer((props) => {
   const { selectedDate } = props;
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
+  const handleClick = () => {
+    setShow(true);
+    navigate("/timetable");
+  };
+
+  const handleStart = () => {
+    navigate("/appointments-begin");
+  };
 
   let filteredCards = listAppointments.appointments;
 
@@ -22,10 +32,7 @@ const CardInfo = (props) => {
   return (
     <div className="card_info">
       {!filteredCards.length && (
-        <CardAdd
-          title={"Добавьте новую встречу"}
-          onClick={() => setShow(true)}
-        />
+        <CardAdd title={"Создать свое расписание"} onClick={handleClick} />
       )}
       {filteredCards.map((item, id) => (
         <div className="card_info_container" key={id}>
@@ -44,26 +51,32 @@ const CardInfo = (props) => {
           </div>
 
           <div className="card">
-            <div className="card_item">
-              <Icon name={"small_calendar"} />
-              <div>
-                {moment(item.startOfAppointment).format("dddd").substring(0, 5)}
-                , {moment(item.startOfAppointment).format("D MMMM")}
+            <div className="card_content">
+              <div className="card_item">
+                <Icon name={"small_calendar"} />
+                <div>
+                  {moment(item.startOfAppointment)
+                    .format("dddd")
+                    .substring(0, 5)}
+                  , {moment(item.startOfAppointment).format("D MMMM")}
+                </div>
+              </div>
+              <div className="card_item">
+                <Icon name={"clock"} />
+                <div>
+                  {moment(item.startOfAppointment).format("HH:mm")}-
+                  {moment(item.endOfAppointment).format("HH:mm")}
+                </div>
               </div>
             </div>
-            <div className="card_item">
-              <Icon name={"clock"} />
-              <div>
-                {moment(item.startOfAppointment).format("HH:mm")}-
-                {moment(item.endOfAppointment).format("HH:mm")}
-              </div>
-            </div>
-            <Button className={"button_color"}>Начать тренировку</Button>
+            <Button className={"button_color"} block onClick={handleStart}>
+              Начать тренировку
+            </Button>
           </div>
         </div>
       ))}
     </div>
   );
-};
+});
 
 export default CardInfo;

@@ -6,11 +6,13 @@ import "./style.scss";
 import listUsers from "../../store/listUsers";
 import { observer } from "mobx-react";
 import { NavLink } from "react-router-dom";
+import Avatar from "../../components/avatar";
+import CardInfo from "../../components/card-info";
 const Chat = observer(() => {
   console.log("sf", listUsers.users);
 
   return (
-    <div className={"chat container_mobile pt-20"}>
+    <div className={"chat container_mobile back_ground"}>
       <div className={"flex alignC justify-s"}>
         <div>
           <Hamburger />
@@ -24,7 +26,7 @@ const Chat = observer(() => {
             <NavLink to={`/chat/${item.id}`} className="nav">
               <div className={"flex alignC justify-s"}>
                 <div className={"flex alignC gap-10"}>
-                  <Icon name={"big_calendar"} />
+                    <Avatar />
                   <div>
                     <div className={"title"}>{item.userName}</div>
                     <div className={"text"}>last sms</div>
@@ -38,6 +40,8 @@ const Chat = observer(() => {
               </div>
             </NavLink>
           ))}
+
+
       </div>
     </div>
   );

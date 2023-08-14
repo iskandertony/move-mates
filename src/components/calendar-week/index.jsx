@@ -10,14 +10,12 @@ import {
 import moment from "moment";
 import "./style.scss";
 
-function CalendarWeek({ onDayClick, selectedDate }) {
+const CalendarWeek = (props) => {
+  const { onDayClick, selectedDate } = props;
   const start = startOfWeek(startOfMonth(new Date()), { weekStartsOn: 1 });
   const end = endOfMonth(new Date());
-
   const month = eachDayOfInterval({ start, end });
-
   const [selectedDay, setSelectedDay] = useState(moment().format("YYYY-MM-DD"));
-
   const todayRef = useRef();
   const today = moment().format("YYYY-MM-DD");
 
@@ -27,7 +25,6 @@ function CalendarWeek({ onDayClick, selectedDate }) {
         todayRef.current.scrollIntoView({
           behavior: "smooth",
           inline: "center",
-          block: "nearest",
         });
       }, 0);
     }
@@ -67,6 +64,6 @@ function CalendarWeek({ onDayClick, selectedDate }) {
       })}
     </div>
   );
-}
+};
 
 export default CalendarWeek;

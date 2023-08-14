@@ -1,9 +1,9 @@
 import WelcomePage from "../pages/welcome-page";
-import Login from "../components/login";
-import Register from "../components/register";
+import Login from "../pages/login";
+import Register from "../pages/register";
 import Payment from "../pages/payment";
-import ClientList from "../pages/clients";
-import ClientDetails from "../pages/clients-details";
+import ClientList from "../pages/client/clients";
+import ClientDetails from "../pages/client/clients-details";
 import Schedule from "../pages/schedule";
 import Chat from "../pages/chat";
 import Settings from "../pages/settings";
@@ -13,8 +13,18 @@ import ConfirmPassword from "../pages/password-confirm";
 import Notifications from "../pages/notifications";
 import ChatDetails from "../pages/chat-details";
 import Profile from "../pages/profile";
-import CoachMain from "../pages/coach-main";
+import CoachMain from "../pages/coach/coach-main";
 import Main from "../pages/main";
+import AppointmentsBegin from "../components/appointments-begin";
+import VideoCall from "../pages/video-call";
+import TimeTable from "../pages/timetable";
+import TimeTableIndividual from "../pages/timetable-individual";
+import TimeTableGroup from "../pages/timetable-group";
+import TimetableWorkHours from "../pages/timetable-work-hours";
+import TimetableWorkHoursCalendar from "../pages/titmetable-work-hours-calendar";
+import AppointmentsAdd from "../pages/appointments-add";
+import CoachDetails from "../pages/coach/coach-details";
+import ClientMain from "../pages/client/clientMain";
 export const routing = {
   welcomePage: {
     path: "/dashboard",
@@ -34,12 +44,20 @@ export const routing = {
     protected: false,
     role: "all",
   },
-  CoachMain: {
-    path: "/coach",
-    element: <CoachMain />, //
+  // CoachMain: {
+  //   path: "/coach",
+  //   element: <CoachMain />, //
+  //   protected: false,
+  //   role: "all",
+  // },
+
+  CoachDetails: {
+    path: "/coach/1",      // TODO поменять на норм роут
+    element: <CoachDetails />, //
     protected: false,
     role: "all",
   },
+
   Main: {
     path: "/main",
     element: <Main />, //
@@ -64,6 +82,13 @@ export const routing = {
     protected: false,
     role: "all",
   },
+
+  // ClientMain: {
+  //   path: "/client",
+  //   element: <ClientMain />, //
+  //   protected: false,
+  //   role: "all",
+  // },
 
   Schedule: {
     path: "/calendar",
@@ -122,6 +147,62 @@ export const routing = {
   Notifications: {
     path: "/notifications",
     element: <Notifications />, //
+    protected: false,
+    role: "all",
+  },
+
+  AppointmentsBegin: {
+    path: "/appointments-begin",
+    element: <AppointmentsBegin />, //
+    protected: false,
+    role: "all",
+  },
+
+  AppointmentsAdd: {
+    path: "/appointments-add",
+    element: <AppointmentsAdd />, //
+    protected: false,
+    role: "all",
+  },
+
+  VideoCall: {
+    path: "/video-call",
+    element: <VideoCall />, //
+    protected: false,
+    role: "all",
+  },
+
+  TimeTable: {
+    path: "/timetable",
+    element: <TimeTable />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableIndividual: {
+    path: "/timetable/individual",
+    element: <TimeTableIndividual />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableGroup: {
+    path: "/timetable/group",
+    element: <TimeTableGroup />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableWorkHours: {
+    path: "/timetable/work-hours",
+    element: <TimetableWorkHours />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableWorkHoursCalendar: {
+    path: "/timetable/work-hours/calendar",
+    element: <TimetableWorkHoursCalendar />,
     protected: false,
     role: "all",
   },

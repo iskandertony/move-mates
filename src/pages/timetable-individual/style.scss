@@ -1,0 +1,14 @@
+.timetable_individual {
+  .ant-select-selector {
+    border-radius: 8px !important;
+    height: 56px;
+    display: flex;
+    align-items: center;
+  }
+
+  .card {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-color: var(--color-secondary-white);
+  }
+}

@@ -1,7 +1,7 @@
 import { autorun, makeAutoObservable, reaction, runInAction } from "mobx";
 import authStore from "./auth";
 import moment from "moment/moment";
-import { getAppointments, getClientsList } from "../api";
+import { getAppointments } from "../api";
 
 function createAppointmentsStore() {
   const today = moment();
@@ -9,7 +9,7 @@ function createAppointmentsStore() {
     appointments: [],
     usersLoading: false,
 
-    async fetchAppointments() {
+    async fetchAppointments(page = 0) {
       try {
         if (authStore?.token) {
           runInAction(() => {
@@ -19,13 +19,18 @@ function createAppointmentsStore() {
           const filter = {
             from: moment(today).toISOString(),
             size: 20,
-            page: 0,
+            page,
           };
 
           const response = await getAppointments(filter);
           runInAction(() => {
-            store.appointments = response?.content;
+            if (page === 0) {
+              store.appointments = response?.content;
+            }
           });
+          if (response?.content.length > 18 && page === 0) {
+            await store.fetchAppointments(page + 1);
+          }
         }
       } catch (error) {
         console.error("Failed to fetch user:", error);
@@ -38,7 +43,7 @@ function createAppointmentsStore() {
   };
 
   autorun(() => {
-    if (authStore?.token) store.fetchAppointments();
+    if (authStore?.token) return store.fetchAppointments();
   });
 
   makeAutoObservable(store);

@@ -1,6 +1,7 @@
 import React from "react";
 import ArrowBack from "../../components/arrow-back";
 import Icon from "../../components/icon";
+import Names from "../../components/names";
 
 const Notifications = () => {
   const arr = [
@@ -19,11 +20,8 @@ const Notifications = () => {
   ];
   return (
     <div className={"container_mobile pt-20 back_ground"}>
-      <div className={"flex alignC gap-20 "}>
-        <ArrowBack />
-        <div>Уведомление</div>
-      </div>
-      <div className={"flex flex-column gap-10"}>
+      <Names name={"Уведомления"} />
+      <div className={"flex flex-column gap-10 pt-20"}>
         {arr.map((item) => (
           <div className={"card flex alignC gap-5"}>
             <Icon name={"big_calendar"} />

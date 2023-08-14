@@ -1,16 +1,16 @@
 .card_statistic {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   padding: 10px;
   border-radius: 20px;
-  border: 1px solid var(--color-secondary-400);
-  background-color: var(--color-secondary-400);
+  border: 1px solid var(--color-secondary-black);
+  background-color: var(--color-secondary-white);
   .card_left {
-
     .number {
       margin-left: 45px;
-      font-family: 'Poppins',sans-serif;
+      font-family: "Poppins", sans-serif;
       font-style: normal;
       font-weight: 400;
       font-size: 64px;
@@ -20,27 +20,24 @@
       display: flex;
       gap: 7px;
 
-
       .title {
-        font-family: 'Montserrat',sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-style: normal;
         font-weight: 500;
         font-size: 20px;
         line-height: 24px;
         /* identical to box height */
 
-
         color: var(--color-secondary-200);
       }
 
       .text {
-        font-family: 'Montserrat',sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-style: normal;
         font-weight: 400;
         font-size: 12px;
         line-height: 15px;
         /* identical to box height */
-
 
         color: var(--color-secondary-200);
       }
@@ -57,7 +54,6 @@
       }
     }
   }
-
 
   .card_right {
     display: flex;

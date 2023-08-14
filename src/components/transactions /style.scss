@@ -3,13 +3,15 @@
   flex-direction: column;
   gap: 10px;
 
+
   .card_transaction {
-    padding: 20px;
-    background-color: var(--color-secondary-100);
-    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--color-secondary-white);
+    border-radius: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10px;
   }
 
   .stats {

@@ -1,16 +1,17 @@
 .card_user_info {
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  .two-columns {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px; // Расстояние между элементами
-
-    div {
-      div:first-child {
-        font-weight: bold; // Делаем первую строку жирной
-      }
-    }
+  justify-content: center;
+  .card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 6px 40px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    min-height: 50px;
+    max-height: 50px;
+    max-width: 150px;
   }
 }

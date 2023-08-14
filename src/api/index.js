@@ -31,7 +31,6 @@ export const request = async (url, method, payload, formData, params) => {
   }
 };
 
-
 export async function login(data) {
   return request(`/auth/login`, "POST", data);
 }
@@ -56,6 +55,10 @@ export async function getAppointments(filter) {
     null,
     filter
   );
+}
+
+export async function getCurrentAppointments(id) {
+  return request(`/api/coaches/appointments/${id}`, "GET");
 }
 
 export async function getClient(id) {

@@ -1,0 +1,17 @@
+.mood {
+  .content {
+    margin-top: 10px;
+    display: flex;
+    overflow: auto;
+
+    gap: 10px;
+    .card {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}
