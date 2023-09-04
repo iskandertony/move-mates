@@ -1,30 +1,44 @@
-import WelcomePage from "../pages/welcome-page";
-import Login from "../pages/login";
-import Register from "../pages/register";
-import Payment from "../pages/payment";
-import ClientList from "../pages/client/clients";
+import WelcomePage from "../pages/shared/welcome-page";
+import Login from "../pages/shared/login";
+import Register from "../pages/shared/register";
+import Payment from "../pages/shared/payment";
+import ClientList from "../pages/shared/users-list";
 import ClientDetails from "../pages/client/clients-details";
-import Schedule from "../pages/schedule";
+import Schedule from "../pages/shared/schedule";
 import Chat from "../pages/chat";
-import Settings from "../pages/settings";
-import ResetPassword from "../pages/password-reset";
-import ValidatePassword from "../pages/password-validate";
-import ConfirmPassword from "../pages/password-confirm";
-import Notifications from "../pages/notifications";
+import Settings from "../pages/shared/settings";
+import ResetPassword from "../pages/shared/password-reset";
+import ValidatePassword from "../pages/shared/password-validate";
+import ConfirmPassword from "../pages/shared/password-confirm";
+import Notifications from "../pages/shared/notifications";
 import ChatDetails from "../pages/chat-details";
-import Profile from "../pages/profile";
-import CoachMain from "../pages/coach/coach-main";
+import Profile from "../pages/shared/profile";
 import Main from "../pages/main";
 import AppointmentsBegin from "../components/appointments-begin";
 import VideoCall from "../pages/video-call";
-import TimeTable from "../pages/timetable";
-import TimeTableIndividual from "../pages/timetable-individual";
-import TimeTableGroup from "../pages/timetable-group";
-import TimetableWorkHours from "../pages/timetable-work-hours";
-import TimetableWorkHoursCalendar from "../pages/titmetable-work-hours-calendar";
-import AppointmentsAdd from "../pages/appointments-add";
+import TimeTableIndividual from "../pages/shared/schedule/timetable-individual";
+import TimeTableGroup from "../pages/shared/schedule/timetable-group";
+import TimetableWorkHours from "../pages/shared/schedule/timetable-work-hours";
+import TimetableWorkHoursCalendar from "../pages/shared/schedule/titmetable-work-hours-calendar";
+import AppointmentsAdd from "../pages/shared/calendar";
 import CoachDetails from "../pages/coach/coach-details";
-import ClientMain from "../pages/client/clientMain";
+import Specialization from "../pages/specialization";
+import NewEventMentor from "../pages/shared/schedule/new-event";
+import TimeTableChoseClient from "../pages/shared/schedule/timetable-chose-client";
+import TimeTableChoseGroup from "../pages/shared/schedule/timetable-chose-group";
+import Reschedule from "../pages/reschedule";
+import Qualification from "../pages/qualification";
+import WorkHoursHoliday from "../pages/work-hours-holiday";
+import NewEventClient from "../pages/client/new-event-client";
+import TimeTableIndividualMentor from "../pages/shared/schedule/timetable-individual";
+import TimeTableIndividualClient from "../pages/client/timetable-individual";
+import TimetableWorkHoursCalendarMentor from "../pages/shared/schedule/titmetable-work-hours-calendar";
+import TimetableWorkHoursCalendarClient from "../pages/client/titmetable-work-hours-calendar";
+import Reservation from "../pages/client/reservation";
+import TimeTableChoseGroupMentor from "../pages/shared/schedule/timetable-chose-group";
+import TimeTableChoseGroupClient from "../pages/client/timetable-chose-group";
+import TimeTableGroupClient from "../pages/client/timetable-group";
+import TimeTableGroupMentor from "../pages/shared/schedule/timetable-group";
 export const routing = {
   welcomePage: {
     path: "/dashboard",
@@ -44,15 +58,9 @@ export const routing = {
     protected: false,
     role: "all",
   },
-  // CoachMain: {
-  //   path: "/coach",
-  //   element: <CoachMain />, //
-  //   protected: false,
-  //   role: "all",
-  // },
 
   CoachDetails: {
-    path: "/coach/1",      // TODO поменять на норм роут
+    path: "/coach/1", // TODO поменять на норм роут
     element: <CoachDetails />, //
     protected: false,
     role: "all",
@@ -82,13 +90,6 @@ export const routing = {
     protected: false,
     role: "all",
   },
-
-  // ClientMain: {
-  //   path: "/client",
-  //   element: <ClientMain />, //
-  //   protected: false,
-  //   role: "all",
-  // },
 
   Schedule: {
     path: "/calendar",
@@ -158,12 +159,12 @@ export const routing = {
     role: "all",
   },
 
-  AppointmentsAdd: {
-    path: "/appointments-add",
-    element: <AppointmentsAdd />, //
-    protected: false,
-    role: "all",
-  },
+  // AppointmentsAdd: {
+  //   path: "/calendar",
+  //   element: <AppointmentsAdd />, //
+  //   protected: false,
+  //   role: "all",
+  // },
 
   VideoCall: {
     path: "/video-call",
@@ -172,37 +173,121 @@ export const routing = {
     role: "all",
   },
 
-  TimeTable: {
-    path: "/timetable",
-    element: <TimeTable />,
+  Specialization: {
+    path: "/specialization",
+    element: <Specialization />,
+    protected: false,
+    role: "all",
+  },
+
+  NewEventMentor: {
+    path: "/mentor/calendar/event",
+    element: <NewEventMentor />,
+    protected: false,
+    role: "all",
+  },
+
+  NewEventClient: {
+    path: "/client/calendar/event",
+    element: <NewEventClient />,
     protected: false,
     role: "all",
   },
 
   TimeTableIndividual: {
-    path: "/timetable/individual",
-    element: <TimeTableIndividual />,
+    path: "/mentor/specialization/individual",
+    element: <TimeTableIndividualMentor />,
     protected: false,
     role: "all",
   },
 
-  TimeTableGroup: {
-    path: "/timetable/group",
-    element: <TimeTableGroup />,
+  IndividualClient: {
+    path: "/client/specialization/individual",
+    element: <TimeTableIndividualClient />,
+    protected: false,
+    role: "all",
+  },
+
+  Reservation: {
+    path: "/client/reservation",
+    element: <Reservation />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableChoseClient: {
+    path: "/specialization/individual/chose-client",
+    element: <TimeTableChoseClient />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableGroupMentor: {
+    path: "/mentor/specialization/group",
+    element: <TimeTableGroupMentor />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableGroupClient: {
+    path: "/client/specialization/group",
+    element: <TimeTableGroupClient />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableChoseGroupMentor: {
+    path: "/mentor/specialization/group/chose-client",
+    element: <TimeTableChoseGroupMentor />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableChoseGroupClient: {
+    path: "/client/specialization/group/chose-client",
+    element: <TimeTableChoseGroupClient />,
     protected: false,
     role: "all",
   },
 
   TimeTableWorkHours: {
-    path: "/timetable/work-hours",
+    path: "/setting/profile/work-hours",
     element: <TimetableWorkHours />,
     protected: false,
     role: "all",
   },
 
-  TimeTableWorkHoursCalendar: {
-    path: "/timetable/work-hours/calendar",
-    element: <TimetableWorkHoursCalendar />,
+  TimeTableWorkHoursCalendarMentor: {
+    path: "/mentor/specialization/work-hours/calendar",
+    element: <TimetableWorkHoursCalendarMentor />,
+    protected: false,
+    role: "all",
+  },
+
+  TimeTableWorkHoursCalendarClient: {
+    path: "/client/specialization/work-hours/calendar",
+    element: <TimetableWorkHoursCalendarClient />,
+    protected: false,
+    role: "all",
+  },
+
+  Reschedule: {
+    path: "/appointments-begin/reschedule",
+    element: <Reschedule />,
+    protected: false,
+    role: "all",
+  },
+
+  Qualification: {
+    path: "/settings/qualification",
+    element: <Qualification />,
+    protected: false,
+    role: "all",
+  },
+
+  Holiday: {
+    path: "/setting/profile/work-hours/calendar",
+    element: <WorkHoursHoliday />,
     protected: false,
     role: "all",
   },

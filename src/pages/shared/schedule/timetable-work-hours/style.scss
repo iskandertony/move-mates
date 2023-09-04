@@ -1,0 +1,85 @@
+.timetable_work_hours {
+  .timetable_card {
+    padding: 10px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  .gutter-row {
+    display: flex;
+    gap: 10px;
+  }
+
+  .flexRow {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .flexItem {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .check_box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .breakRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .breakRow_content {
+  }
+
+  .breakRow_item {
+    display: flex;
+    align-items: center;
+    margin-right: 16px;
+  }
+
+  .ant-form-item {
+    margin: 0;
+  }
+
+  input {
+    text-align: center !important;
+  }
+
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-right: 7px;
+  }
+  .breakRow_img {
+    width: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .day_text {
+    ext-align: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+
+   .button_done {
+     margin-top: 60px;
+   }
+}

@@ -1,0 +1,49 @@
+.timetable {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .icon {
+    display: flex;
+  }
+  .timetable_card {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 8px;
+    margin-top: 8px;
+  }
+
+  .text {
+    color: var(--color-secondary-500);
+  }
+
+  .hide-selected .ant-select-selection-item {
+    display: none;
+  }
+
+  .ant-select-selector {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .ant-select hide-selected css-dev-only-do-not-override-ed5zg0 ant-select-multiple ant-select-show-arrow {
+    border: none !important;
+    outline: none !important;
+  }
+
+  .content {
+    position: absolute;
+    z-index: 99;
+  }
+
+  .ant-btn {
+    padding: 20px 20px;
+    margin-top: 20px;
+  }
+}
+

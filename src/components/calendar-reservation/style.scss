@@ -1,0 +1,65 @@
+.calendar_reservation {
+  .time_table_work_hours_calendar {
+    .time-slots-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .time-slot-card {
+      position: relative;
+      border-radius: 10px;
+      flex: 0 1 calc(33.333% - 20px);
+      border: 1px solid transparent;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .time-slot-card.selected {
+      background-color: var(--color-secondary-red);
+      color: var(--color-secondary-white);
+    }
+
+    .duration-options {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      background: white;
+      border: 1px solid transparent;
+      border-radius: 0px 8px 8px 8px;
+      margin-top: 5px;
+      z-index: 1;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      left: 0;
+    }
+
+    .duration-options button {
+      font-family: "Montserrat", sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 145%; /* 29px */
+      width: 120px;
+      height: 35px;
+      padding: 5px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .duration-options button.selected {
+      background-color: var(--color-secondary-1000);
+      color: var(--color-secondary-black);
+    }
+
+    .duration-options button {
+      transition: background-color 0.3s ease;
+    }
+
+    .duration-options button:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+}

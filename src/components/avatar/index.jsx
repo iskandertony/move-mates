@@ -1,5 +1,5 @@
 import React from "react";
-import avatar from "../../assets/Imgs/avatar.gif";
+import avatar from "../../assets/imgs/avatar.gif";
 import "./style.scss";
 const Avatar = () => {
   return (

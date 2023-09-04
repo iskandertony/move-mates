@@ -1,40 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../../../components/header";
 import CardAdd from "../../../components/card-add";
 import CardFood from "../../../components/card-food";
 import FitnessLog from "../../../components/fitness-log";
-import MySlider from "../../../components/slider";
-import { Button } from "antd";
+
 import Mood from "../../../components/mood";
 import { useNavigate } from "react-router-dom";
+import img from "../../../assets/imgs/validateps.png";
 
+import TabCircle from "../../../components/tab-circle";
+import "./style.scss";
+import CardInfoClient from "../../../components/card-info-client";
+import Icon from "../../../components/icon";
+import MySlider from "../../../components/slider";
 const ClientMain = () => {
   const navigate = useNavigate();
+  const [activeTab, setActiveTab] = useState("Спорт");
+
   const handleClick = () => {
-    navigate("/coach/1");
+    navigate("/client/calendar/event");
   };
 
   return (
     <div
-      className={"container_mobile pt-20 back_ground flex flex-column gap-20"}
+      className={
+        "container_mobile pt-20 back_ground client_main flex flex-column gap-20"
+      }
     >
       <Header />
-      <MySlider />
+      <MySlider img={img} />
 
       <Mood />
 
-      <div className={"flex justify-s gap-5"}>
-        <Button block onClick={handleClick}>
-          Спорт
-        </Button>
-        <Button block>Терапия</Button>
-      </div>
+      <TabCircle
+        name={"Спорт"}
+        subName={"Терапия"}
+        onClick={setActiveTab}
+        activeTab={activeTab}
+      />
 
       <CardAdd
-        title={"Добавьте Тренера"}
+        title={"Добавьте тренировку"}
         text={"Выбирайте тренера по своим предпочтениям."}
-        // onClick={() => setShow(true)}
+        onClick={handleClick}
       />
+      <div>
+        <div className={"flex alignC justify-s"}>
+          <div className={"name"}>Сегодняшние тренировки</div>
+          <Icon name={"calendar"} />
+        </div>
+        <CardInfoClient />
+      </div>
       <CardFood />
       <FitnessLog />
     </div>

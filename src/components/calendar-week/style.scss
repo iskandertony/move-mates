@@ -3,6 +3,8 @@
   gap: 15px;
   overflow: auto;
   padding: 15px 0;
+
+
   .calendar-day {
     display: flex;
     flex-direction: column;
@@ -13,7 +15,7 @@
     background: var(--color-secondary-white);
     box-shadow: 0px 4px 10px rgba(0, 115, 204, 0.26);
     border-radius: 18px;
-
+    border: 1px solid var(--color-secondary-300);
     .calendar-day-number,
     .calendar-day-name {
       color: var(--color-secondary-300);

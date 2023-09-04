@@ -7,7 +7,7 @@ import moment from "moment";
 
 import { getAppointments } from "../../api";
 import listAppointments from "../../store/getAppointments";
-import {observer} from "mobx-react";
+import { observer } from "mobx-react";
 const CardCalendarWorkouts = observer(() => {
   const [showMenu, setShowMenu] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,9 +35,9 @@ const CardCalendarWorkouts = observer(() => {
     );
 
   return (
-    <div className={"flex flex-column gap-20"}>
+    <div className={"flex flex-column gap-20 card_calendar_workouts"}>
       {workouts.map((item, id) => (
-        <div className={"card card_calendar_workouts"} key={id}>
+        <div className={"card content"} key={id}>
           <div className="right_conor" onClick={() => handleClick(id)}>
             ...
           </div>
@@ -64,6 +64,8 @@ const CardCalendarWorkouts = observer(() => {
           </div>
         </div>
       ))}
+
+      {workouts.length >= 0 && <div className={"text"}>Нет событий</div>}
     </div>
   );
 });

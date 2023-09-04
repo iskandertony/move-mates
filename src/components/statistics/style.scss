@@ -1,70 +1,82 @@
-.card_statistic {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  padding: 10px;
-  border-radius: 20px;
-  border: 1px solid var(--color-secondary-black);
-  background-color: var(--color-secondary-white);
-  .card_left {
-    .number {
-      margin-left: 45px;
-      font-family: "Poppins", sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 64px;
-      line-height: 96px;
-    }
-    .content {
-      display: flex;
-      gap: 7px;
-
-      .title {
-        font-family: "Montserrat", sans-serif;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 24px;
-        /* identical to box height */
-
-        color: var(--color-secondary-200);
-      }
-
-      .text {
-        font-family: "Montserrat", sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12px;
-        line-height: 15px;
-        /* identical to box height */
-
-        color: var(--color-secondary-200);
-      }
-      .icon {
-        width: 40px;
-        height: 40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 2px;
-        border-radius: 50%;
-        border: 1px solid var(--color-secondary-100);
-        background-color: var(--color-secondary-100);
-      }
-    }
+.statistic {
+  .icon {
+    display: flex;
+  }
+  .card_statistic_copy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 3px 8px;
+    border-radius: 5px;
+    border: 1px solid var(--color-secondary-600);
+    background-color: var(--color-secondary-white);
+  }
+  .card_statistic {
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 10px;
+    border-radius: 16px;
+    border: 1px solid var(--color-secondary-600);
+    background-color: var(--color-secondary-white);
   }
 
-  .card_right {
+  .text_statistic {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    color: var(--color-secondary-500);
+    margin-bottom: 45px;
+  }
+  .content {
+    gap: 15px;
+    display: flex;
+    padding: 12px 12px 0 12px;
+    z-index: -1;
+    background-image: url("../../assets/imgs/rectangle.png");
 
-    .ant-select-selector {
-      border-radius: 40px;
+    .test {
+      position: relative;
+      img {
+        max-width: 100%;
+      }
     }
 
-    .select {
-      text-align: center;
+    .test2 {
+      position: absolute;
+    }
+
+    .test3 {
+      position: absolute;
+      right: -185px;
+      top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .title {
+      font-size: 13px;
+    }
+
+    .text {
+      font-size: 12px;
+      width: 170px;
+    }
+
+    .ant-btn {
+      position: absolute;
+      left: 35px;
+      bottom: -35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 20px;
+      background-color: var(--color-secondary-800);
+      color: var(--color-secondary-white);
     }
   }
 }

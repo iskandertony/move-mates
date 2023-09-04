@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "../icon";
-import "./style.scss"
+import "./style.scss";
 const CardAdd = (props) => {
   const { title, text, onClick } = props;
   return (
@@ -9,7 +9,7 @@ const CardAdd = (props) => {
         <div className="title">{title}</div>
         <div className="text">{text}</div>
       </div>
-      <Icon name={"add"} className={"icon"}/>
+      <Icon name={"add"} className={"icon"} />
     </div>
   );
 };

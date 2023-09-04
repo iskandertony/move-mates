@@ -26,7 +26,7 @@ const CoachDetails = () => {
 
   return (
     <div className="container_mobile back_ground">
-      <Names name={"Профиль тренерa"} />
+      <Names title={"Назад"} name={"Профиль тренерa"} />
 
       <div className={"flex flex-column justify-s alignC TextA-c pt-20"}>
         <div>
@@ -75,7 +75,7 @@ const CoachDetails = () => {
         </div>
       </div>
 
-      <Tab tabs={tabsData} />
+      <Tab name={"Квалификация"} subName={"Сертификаты"} />
     </div>
   );
 };

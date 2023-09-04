@@ -6,6 +6,11 @@ import ArrowBack from "../../../components/arrow-back";
 import { getClient } from "../../../api";
 import { useParams } from "react-router-dom";
 import TextArea from "antd/es/input/TextArea";
+import Names from "../../../components/names";
+import Avatar from "../../../components/avatar";
+import Tab from "../../../components/tab";
+import CardInfo from "../../../components/card-info";
+import CardStatistics from "../../../components/statistics";
 
 const ClientDetails = () => {
   const { id } = useParams();
@@ -55,44 +60,12 @@ const ClientDetails = () => {
   return (
     <div className="client_details container_mobile back_ground">
       <div>
-        <ArrowBack />
+        <Names title={"Клиенты"} name={"Профиль клиента"} />
         <div className="flex alignC justify-c flex-column gap-5">
-          <Icon name={"big_calendar"} />
+          <Avatar />
           <div className="name">{clientData?.name}</div>
           <div>Клиент</div>
         </div>
-
-        {/*{upcomingTraining && (*/}
-        {/*  <div className={"card card_clien_content"}>*/}
-        {/*    <div className="flex gap-10 alignC">*/}
-        {/*      <Icon name={"calendar"} />*/}
-        {/*      <div className="text">Ближайшая тренировка</div>*/}
-        {/*    </div>*/}
-        {/*    <div className="flex gap-5 ">*/}
-        {/*      <div className="title">*/}
-        {/*        {upcomingTraining.date.toLocaleDateString()} |*/}
-        {/*      </div>*/}
-        {/*      <div className="title">{clientData.time} |</div>*/}
-        {/*      <div className="title">{clientData.status}</div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*)}*/}
-      </div>
-
-      <div className="content">
-        {/*{train.map((item, id) => (*/}
-        {/*  <div className="card_clien_content card" key={id}>*/}
-        {/*    <div className="flex gap-10 alignC">*/}
-        {/*      <Icon name={"calendar"} />{" "}*/}
-        {/*      <div className="text">{item.type} Traning</div>*/}
-        {/*    </div>*/}
-        {/*    <div className="flex gap-5">*/}
-        {/*      <div className="title">{item.date.toLocaleDateString()} |</div>*/}
-        {/*      <div className="title">{item.time} |</div>{" "}*/}
-        {/*      <div className="title">{item.status}</div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
-        {/*))}*/}
       </div>
 
       <CardUserInfo
@@ -102,10 +75,53 @@ const ClientDetails = () => {
         dateOfBirth={clientData?.dateOfBirth}
       />
 
-      <div>
-        <div>Обо мне</div>
+      <div className={"info"}>
+        <div className={"title"}>Обо мне</div>
         <TextArea placeholder="Description" />
       </div>
+
+      <Tab
+        name={"Предстоящие"}
+        subName={"Прошедшие"}
+        content={
+          <div className="content">
+            {train.map((item, id) => (
+              <div className="card_clien_content card" key={id}>
+                <div className="flex gap-10 alignC">
+                  <Icon name={"calendar"} />{" "}
+                  <div className="text">{item.type} Traning</div>
+                </div>
+                <div className="flex gap-5">
+                  <div className="title">
+                    {item.date.toLocaleDateString()} |
+                  </div>
+                  <div className="title">{item.time} |</div>{" "}
+                  <div className="title">{item.status}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        }
+        subContent={
+          <div className="content">
+            {train.map((item, id) => (
+              <div className="card_clien_content card" key={id}>
+                <div className="flex gap-10 alignC">
+                  <Icon name={"calendar"} />{" "}
+                  <div className="text">{item.type} Traning</div>
+                </div>
+                <div className="flex gap-5">
+                  <div className="title">
+                    {item.date.toLocaleDateString()} |
+                  </div>
+                  <div className="title">{item.time} |</div>{" "}
+                  <div className="title">{item.status}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        }
+      />
     </div>
   );
 };

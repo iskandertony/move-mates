@@ -2,20 +2,14 @@ import React, { useEffect, useMemo, useState } from "react";
 import { Calendar } from "react-calendar";
 import moment from "moment";
 
-import Icon from "../icon";
-import authStore from "../../store/auth";
-import { getAppointments } from "../../api";
-
 import "moment/locale/ru";
 import "react-calendar/dist/Calendar.css";
 import "./style.scss";
 import listAppointments from "../../store/getAppointments";
 import { observer } from "mobx-react";
-const MyCalendar = observer(() => {
-  const [date, setDate] = React.useState(new Date());
-  const [slotsLoading, setSlotsLoading] = useState(true);
-  const [slots, setSlots] = useState({});
-
+const MyCalendar = observer((props) => {
+  const [date, setDate] = useState(new Date());
+  const { onDateChange, setSelectedDate } = props;
   let trainings = [];
 
   function tileContent({ date }) {
@@ -34,36 +28,19 @@ const MyCalendar = observer(() => {
     }
   }
 
-  // function tileClassName({ date }) {
-  //   const formatDate = moment(date).format("YYYY-MM-DD");
-  //   if (trainings.includes(formatDate)) {
-  //     return "highlight";
-  //   }
-  // }
-
-  // const tileDisabled = (props) => {
-  //     const { date, view } = props
-  //     if (view !== 'month') {
-  //         return false
-  //     }
-  //     if (slotsLoading || !slots[date.getMonth()]) {
-  //         return true
-  //     }
-  //     return !slots[date.getMonth()][date.getDate()]?.length
-  // }
-
   return (
     <div className="schedule">
       <Calendar
         startAccessor="start"
         endAccessor="end"
-        // tileDisabled={tileDisabled}
         date={date}
         locale="ru-RU"
-        // tileClassName={tileClassName}
+        onChange={(newDate) => {
+          if (onDateChange) {
+            onDateChange(newDate);
+          }
+        }}
         tileContent={listAppointments.appointments && tileContent}
-        // maxDate={new Date(new Date().setDate(new Date().getDate() + 14))} todo это при броне
-        // minDate={new Date(new Date().setDate(new Date().getDate()))}
       />
     </div>
   );

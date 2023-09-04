@@ -7,7 +7,7 @@ const ModalWrapper = (props) => {
   const { children, isShown, setIsShown, className, style } = props;
 
   const handleClose = (e) => {
-    if (e.target.className.includes("modal-bg")) {
+    if (e.target.className.includes("modal-cancel-bg")) {
       setIsShown && setIsShown(false);
     }
   };

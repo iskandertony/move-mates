@@ -1,9 +1,10 @@
 import React from "react";
 import Slider from "react-slick";
-
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-const MySlider = () => {
+import "./style.scss"
+const MySlider = (props) => {
+  const { child1, child1_sub, child2, child3, className, img } = props;
   const settings = {
     dots: true, // Отображение индикаторов слайда (точек)
     infinite: true, // Бесконечное пролистывание
@@ -14,16 +15,23 @@ const MySlider = () => {
   };
 
   return (
-    <Slider {...settings} >
-      <div>
-        <h3>Slide 1</h3>
+    <Slider {...settings} className={`slider ${className} `}>
+      <div className={"child_1"}>
+        <div>
+          <img src={img} alt="" />
+        </div>
+        <div className={"text"}>{child1}</div>
+        <div className={"text"}>{child1_sub}</div>
       </div>
-      <div>
-        <h3>Slide 2</h3>
+      <div className={"child_2"}>
+        <h3 className={"text"}>{child2}</h3>
       </div>
-      <div>
-        <h3>Slide 3</h3>
-      </div>
+
+      {child3 && (
+        <div className={"child_3"}>
+          <h3>{child3}</h3>
+        </div>
+      )}
     </Slider>
   );
 };

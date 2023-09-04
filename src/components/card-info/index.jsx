@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import Icon from "../icon";
 import "./style.scss";
 import { Button } from "antd";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import listAppointments from "../../store/getAppointments";
-import CardAdd from "../card-add";
+
 import { observer } from "mobx-react";
+
+import Avatar from "../avatar";
+import MySlider from "../slider";
 const CardInfo = observer((props) => {
   const { selectedDate } = props;
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
-  const handleClick = () => {
-    setShow(true);
-    navigate("/timetable");
-  };
 
   const handleStart = () => {
     navigate("/appointments-begin");
@@ -32,13 +30,27 @@ const CardInfo = observer((props) => {
   return (
     <div className="card_info">
       {!filteredCards.length && (
-        <CardAdd title={"Создать свое расписание"} onClick={handleClick} />
+        <MySlider
+          child1={
+            "У вас пока нет клиентов, для добавления клиентов в базу, отправьте им ссылку из «Действия»."
+          }
+          child1_sub={
+            "Примечание: вас клиенты в системе уже видят и могу записаться к вам на тренировку."
+          }
+          child2={
+            'Для установления прочного доверия среди клиентов и обеспечения гладкой работы приложения для вас, рекомендуем заполнить ваш профиль. Просто зайдите в раздел настроек, выберите "Edit" и обновите информацию о себе. Это поможет нам обеспечить вам наилучший сервис.\n' +
+            "\n"
+          }
+          className={"main_slider"}
+        />
       )}
       {filteredCards.map((item, id) => (
         <div className="card_info_container" key={id}>
-          <div className="card_info_status right_conor">Скоро</div>
+          <div className="card_info_status right_conor">
+            <Icon name={"check"} />
+          </div>
           <div className="card_info_info">
-            <Icon name={"big_profile"} className="profile" />
+            <Avatar />
 
             <div className="text">
               <div className="name">{item.clientName}</div>
@@ -55,10 +67,8 @@ const CardInfo = observer((props) => {
               <div className="card_item">
                 <Icon name={"small_calendar"} />
                 <div>
-                  {moment(item.startOfAppointment)
-                    .format("dddd")
-                    .substring(0, 5)}
-                  , {moment(item.startOfAppointment).format("D MMMM")}
+                  {moment(item.startOfAppointment).format("dd")}, {""}
+                  {moment(item.startOfAppointment).format("D MMMM")}
                 </div>
               </div>
               <div className="card_item">

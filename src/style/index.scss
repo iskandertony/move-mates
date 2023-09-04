@@ -154,6 +154,18 @@ h4 {
   padding-bottom: 120px;
 }
 
+.back_ground.secondary {
+  padding-bottom: 60px;
+}
+
+.back_ground_white {
+  padding-top: 40px;
+  background-color: var(--color-secondary-white);
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
 .title {
   font-family: "Montserrat", sans-serif;
   font-style: normal;
@@ -188,10 +200,10 @@ h4 {
 }
 
 .card {
-  padding: 20px;
-  border-radius: 20px;
-  border: 1px solid var(--color-secondary-100);
-  background-color: var(--color-secondary-white);
+  border-radius: 8px;
+  background-color: transparent;
+  padding: 17px 15px;
+  border: 1px solid var(--color-secondary-500);
 }
 
 .right_conor {
@@ -200,5 +212,54 @@ h4 {
 }
 
 .button_color {
-  background-color: var(--color-secondary-green);
+  background-color: var(--color-alternative-green) !important;
+}
+
+.button_done {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-black);
+  color: var(--color-secondary-white);
+  width: 100%;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  padding: 20px 40px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-black);
+  color: var(--color-secondary-white);
+  width: 100%;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.button_exit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-white);
+  color: var(--color-secondary-red);
+  width: 100%;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.dropdown_text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-alternative-1400);
+}
+
+.dropdown_text_red {
+  color: var(--color-alternative-1500) !important;
 }

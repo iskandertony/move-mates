@@ -19,7 +19,7 @@ const CoachMain = observer(() => {
   const currentMonth = moment().format("MMMM");
 
   return (
-    <div className="main back_ground container_mobile">
+    <div className="main back_ground_white container_mobile">
       <Header />
       <div className="name">Доброе утро, {userStore.user?.userName}</div>
       <div className="name">{currentMonth}</div>

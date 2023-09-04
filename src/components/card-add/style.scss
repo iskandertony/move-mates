@@ -3,16 +3,12 @@
   align-items: center;
   justify-content: space-between;
 
-  .text {
+  .title {
     width: 200px;
-  }
-  .icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 50px;
-    height: 50px;
-    background-color: var(--color-secondary-600);
-    border-radius: 50%;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 }

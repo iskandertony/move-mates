@@ -2,7 +2,7 @@ $calendarHeight: 340px;
 $buttonSize: 40px;
 
 .schedule {
-  margin-top: 40px;
+
   .react-calendar {
     border-radius: 10px;
     width: 100%;
@@ -10,7 +10,7 @@ $buttonSize: 40px;
   }
 
   .react-calendar__tile {
-    position: relative; // Add relative positioning here
+    position: relative;
 
     &--now {
       border-radius: 40px;
@@ -18,7 +18,7 @@ $buttonSize: 40px;
       align-items: center;
       justify-content: center;
       background: var(--color-secondary-600);
-      color: var(--color-secondary-100);
+      color: var(--color-secondary-white);
     }
 
     &:disabled {
@@ -35,8 +35,8 @@ $buttonSize: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-secondary-600);
-    color: var(--color-secondary-100);
+    background: var(--color-secondary-900);
+    color: var(--color-secondary-white);
   }
   .react-calendar__navigation {
     display: flex;
@@ -90,15 +90,15 @@ $buttonSize: 40px;
     top: 26px;
     left: 50%;
     transform: translate(-50%, -50%);
-    p{
-      width: 4px;
-      height: 4px;
+    p {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      color: red;
+      color: var(--color-secondary-500);
     }
   }
 
-  .react-calendar__tile--active:enabled:hover, .react-calendar__tile--active:enabled:focus {
+  .react-calendar__tile--active {
     overflow: inherit !important;
     max-width: 25px;
     margin: auto;
@@ -107,7 +107,21 @@ $buttonSize: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-secondary-600);
-    color: var(--color-secondary-100);
+    background: var(--color-secondary-black);
+    color: var(--color-secondary-white);
+  }
+
+  .react-calendar__tile--active:enabled:hover,
+  .react-calendar__tile--active:enabled:focus {
+    overflow: inherit !important;
+    max-width: 25px;
+    margin: auto;
+    height: 25px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-secondary-black);
+    color: var(--color-secondary-white);
   }
 }

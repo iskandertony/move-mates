@@ -1,0 +1,16 @@
+.profile {
+  background-color: var(--color-secondary-700);
+  .timetable_card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 15px;
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 8px;
+  }
+
+  .ant-form-item-label label {
+    color: var(--color-secondary-500);
+  }
+}
