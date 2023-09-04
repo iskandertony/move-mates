@@ -1,0 +1,28 @@
+.work_hours_holiday_component {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  .selected_day {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
+  .time_range {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+
+  .time {
+
+  }
+}

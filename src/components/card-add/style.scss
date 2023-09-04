@@ -1,0 +1,14 @@
+.card_add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .title {
+    width: 200px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

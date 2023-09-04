@@ -1,0 +1,15 @@
+
+.fitness_log {
+  display: flex;
+  gap: 10px;
+  .fitness_log_card {
+    border-radius: 10px;
+    background-color: pink;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 20px;
+    width: 170px;
+    height: 130px;
+  }
+}

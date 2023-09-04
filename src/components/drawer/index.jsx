@@ -1,23 +1,34 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import { Drawer } from "antd";
+import { NavLink } from "react-router-dom";
+import { observer } from "mobx-react";
+
 import Icon from "../icon";
+import userStore from "../../store/user";
+import authStore from "../../store/auth";
 
 import "./style.scss";
-import { NavLink } from "react-router-dom";
-const DrawerMenu = ({ open, setOpen }) => {
+import Avatar from "../avatar";
+
+const DrawerMenu = observer(({ open, setOpen }) => {
   const [placement, setPlacement] = useState("left");
 
   const onClose = () => {
     setOpen(!open);
   };
+  const logOut = () => {
+    sessionStorage.removeItem("token");
+    authStore.setToken(null);
+    localStorage.clear();
+  };
+
   return (
     <>
       <Drawer
         title={
           <div className={"drawer_menu"}>
-            <Icon name={"profilecircle"} className={"icon"} />
-            <div className="name">Айдай</div>
+            <Avatar />
+            <div className="name">{userStore.user?.userName}</div>
             <div className="title">Тренер</div>
           </div>
         }
@@ -35,16 +46,20 @@ const DrawerMenu = ({ open, setOpen }) => {
             Платежи
           </div>
         </NavLink>
-        <div className="settings">
-          <Icon name={"setting"} />
-          Настройки
-        </div>
-        <div className="settings">
-          <Icon name={"exit"} />
-          Выйти
-        </div>
+        <NavLink to={"/settings"}>
+          <div className="settings">
+            <Icon name={"setting"} />
+            Настройки
+          </div>
+        </NavLink>
+        <NavLink to={"/dashboard"}>
+          <div className="settings" onClick={logOut}>
+            <Icon name={"exit"} />
+            Выйти
+          </div>
+        </NavLink>
       </Drawer>
     </>
   );
-};
+});
 export default DrawerMenu;

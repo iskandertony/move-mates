@@ -1,0 +1,59 @@
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.alignC {
+  align-items: center;
+}
+
+.justify-s {
+  justify-content: space-between;
+}
+
+.justify-c {
+  justify-content: center;
+}
+
+.TextA-c {
+  text-align: center;
+}
+
+.gap-5 {
+  gap: 5px;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+
+.gap-20 {
+  gap: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+p-0 {
+  padding: 0 !important;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}

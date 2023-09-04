@@ -1,0 +1,22 @@
+.chat_details {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  .header_chat {
+    background-color: greenyellow;
+    padding: 0 20px;
+  }
+
+  .content {
+    overflow: auto;
+    flex-grow: 1;
+    margin-bottom: 20px;
+  }
+
+  .footer_chat {
+    display: flex;
+    gap: 10px;
+    padding: 0 20px 100px 20px;
+    background-color: gold;
+  }
+}

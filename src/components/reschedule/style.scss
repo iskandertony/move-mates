@@ -1,0 +1,30 @@
+.reschedule_component {
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  .ant-select-selection-placeholder {
+    background-color: var(--color-alternative-800);
+    color: var(--color-secondary-white) !important;
+    padding-inline-end: 0 !important;
+    padding: 4px 7px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+  .ant-select-item {
+    .ant-select-item-option-content {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  .ant-select-arrow {
+    display: none;
+  }
+
+  .ant-select-selector {
+    padding: 0 !important;
+  }
+}

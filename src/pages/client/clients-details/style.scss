@@ -1,0 +1,35 @@
+.client_details {
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+}
+  .card_clien_content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .names {
+    gap: 20px;
+  }
+
+
+  .tabs{
+    margin-top: 40px;
+  }
+
+  .info {
+    margin-top: 25px;
+    .title {
+      margin-bottom: 10px;
+      font-family: "Montserrat",sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 22px; /* 110% */
+    }
+  }
+}

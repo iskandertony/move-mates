@@ -1,19 +1,21 @@
-import React, { useState } from "react";
-import "./style.scss";
+import React from "react";
+
 import Icon from "../icon";
-import DrawerMenu from "../drawer";
+import Hamburger from "../hamburger";
+
+import "./style.scss";
+import { NavLink } from "react-router-dom";
 const Header = () => {
-  const [open, setOpen] = useState(false);
   return (
     <div className="header ">
       <div className="header_left">
-        <Icon name={"hambergermenu"} onClick={() => setOpen(true)} />
+        <Hamburger />
       </div>
       <div className="header_right">
-        <Icon name={"notification"} />
-        <Icon name={"profilecircle"} className="header_profile" />
+        <NavLink to={"/notifications"}>
+          <Icon name={"notification"} />
+        </NavLink>
       </div>
-      <DrawerMenu open={open} setOpen={setOpen} />
     </div>
   );
 };

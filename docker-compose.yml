@@ -1,0 +1,10 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: .
+      args:
+        REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}
+    image: frontend-web
+    ports:
+      - 80:80

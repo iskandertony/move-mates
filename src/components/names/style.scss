@@ -1,0 +1,15 @@
+.names {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 50px;
+
+  .names_content {
+    display: flex;
+    align-items: center;
+  }
+
+  .icon {
+    display: flex;
+  }
+}

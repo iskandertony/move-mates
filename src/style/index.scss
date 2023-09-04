@@ -1,12 +1,19 @@
-@import 'color';
+@import "color";
 //@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  min-height: 100%;
+  justify-content: space-between;
+}
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: "Nunito Sans", sans-serif;
   font-style: normal;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -41,6 +48,7 @@ button {
     font-size: 0.6rem;
   }
 }
+
 b {
   font-weight: 600;
 }
@@ -53,10 +61,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Comfortaa', sans-serif;
+  font-family: "Comfortaa", sans-serif;
   user-select: none;
 }
-a, span {
+a,
+span {
   user-select: none;
 }
 
@@ -65,7 +74,7 @@ h1 {
 }
 h2 {
   font-size: 1.6rem;
-  color: var(--palette-secondary-700);
+  color: var(--color-secondary-200);
   @media (max-width: 768px) {
     font-size: 0.9rem;
   }
@@ -77,9 +86,6 @@ h4 {
   font-size: 0.9rem;
 }
 
-.test {
-  background: var(--palette-secondary-100);
-}
 .container {
   width: 90%;
   max-width: 1216px;
@@ -93,17 +99,17 @@ h4 {
     width: calc(100% - 40px);
   }
 }
-.custom-toast {
-  border-radius: 12px;
-  z-index: 1000;
-  .Toastify__progress-bar {
-    background: var(--palette-light-violet-600);
-  }
-}
-.Toastify__toast-container {
-  top: 4em !important;
-  z-index: 10001;
-}
+//.custom-toast {
+//  border-radius: 12px;
+//  z-index: 1000;
+//  .Toastify__progress-bar {
+//    background: var(--palette-light-violet-600);
+//  }
+//}
+//.Toastify__toast-container {
+//  top: 4em !important;
+//  z-index: 10001;
+//}
 
 //// DatePicker styles
 .react-datepicker__day--keyboard-selected {
@@ -113,7 +119,7 @@ h4 {
 }
 
 .react-datepicker__day--selected {
-  background: #7C46C4 !important;
+  background: #7c46c4 !important;
   outline: none;
 }
 
@@ -123,4 +129,137 @@ h4 {
 
 .react-datepicker__header {
   background: rgba(124, 70, 196, 0.11) !important;
+}
+
+.nav {
+  text-decoration: none;
+}
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px 40px;
+}
+
+.container_mobile {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.back_ground {
+  padding-top: 40px;
+  background-color: var(--color-secondary-700);
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+.back_ground.secondary {
+  padding-bottom: 60px;
+}
+
+.back_ground_white {
+  padding-top: 40px;
+  background-color: var(--color-secondary-white);
+  height: 100%;
+  min-height: 100vh;
+  padding-bottom: 120px;
+}
+
+.title {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14.3087px;
+  line-height: 145%;
+  color: var(--color-secondary-black);
+}
+
+.name {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 145%;
+  color: var(--color-secondary-black);
+}
+
+.text {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13.2081px;
+  line-height: 145%;
+  color: var(--color-secondary-black);
+}
+
+.subscription {
+}
+
+.description {
+}
+
+.card {
+  border-radius: 8px;
+  background-color: transparent;
+  padding: 17px 15px;
+  border: 1px solid var(--color-secondary-500);
+}
+
+.right_conor {
+  position: absolute;
+  right: 10px;
+}
+
+.button_color {
+  background-color: var(--color-alternative-green) !important;
+}
+
+.button_done {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-black);
+  color: var(--color-secondary-white);
+  width: 100%;
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  padding: 20px 40px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-black);
+  color: var(--color-secondary-white);
+  width: 100%;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.button_exit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-secondary-white);
+  color: var(--color-secondary-red);
+  width: 100%;
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.dropdown_text {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--color-alternative-1400);
+}
+
+.dropdown_text_red {
+  color: var(--color-alternative-1500) !important;
 }

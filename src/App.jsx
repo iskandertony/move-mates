@@ -1,25 +1,42 @@
-import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import Login from "./components/login";
-import Register from "./components/register";
+import React from "react";
+import { Route, Routes, useLocation, Navigate } from "react-router-dom";
+import { routing } from "./routing";
+
 import Footer from "./components/footer";
-import Main from "./pages/main";
-import Home from "./pages/home";
-import Payment from "./pages/payment";
+import authStore from "./store/auth";
+import { observer } from "mobx-react";
 
 function App() {
-    return (
-        <main className="app">
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/main" element={<Main />} />
-                <Route path="/payment" element={<Payment />} />
-            </Routes>
-            <Footer/>
-        </main>
-    );
+  const location = useLocation();
+
+  const FooterRoutes = [
+    "/main",
+    "/client",
+    "/calendar",
+    "/chat",
+    "coach",
+    "client",
+  ];
+
+  const showFooter = FooterRoutes.includes(location.pathname);
+
+  return (
+    <main className="app">
+      <Routes>
+        {Object.keys(routing).map((key) => {
+          const route = routing[key];
+          if (route.role === "all") {
+            return (
+              <Route key={key} path={route.path} element={route.element} />
+            );
+          }
+          return null;
+        })}
+        <Route path="*" element={<Navigate to="/dashboard" />} />
+      </Routes>
+      {showFooter && <Footer />}
+    </main>
+  );
 }
 
-export default App;
+export default observer(App);
