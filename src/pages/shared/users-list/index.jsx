@@ -9,9 +9,9 @@ import MentorList from "../../mentor-list";
 const Clients = observer(() => {
   return (
     <div className={"back_ground client container_mobile"}>
-      {/*<div className="name m-0x">*/}
-      {/*  {userStore.role === "coach" ? "Ваши клиенты" : "Специалисты"}*/}
-      {/*</div>*/}
+      <div className="name flex justify-c">
+        {userStore.role === "coach" ? "Ваши клиенты" : "Специалисты"}
+      </div>
       {userStore.role === "coach" ? (
         <ClientList mode={"display"} />
       ) : (
