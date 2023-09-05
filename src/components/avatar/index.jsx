@@ -5,6 +5,7 @@ const Avatar = () => {
   return (
     <div className={""}>
       <img src={avatar} alt="" className={"avatar"} />
+
     </div>
   );
 };
