@@ -4,7 +4,7 @@ stages:
 deploy_job:
   stage: deploy
   only:
-    - main # или та ветка, которую вы хотите деплоить
+    - main
   script:
     - echo "Deploying to Amazon Linux server..."
     - rsync -av -e "ssh -i /Users/mans/Downloads/playground.pem" --delete ./build/ ec2-user@54.221.157.175:/path/to/html/
