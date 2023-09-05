@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./style.scss";
+import { Button } from "antd";
 const CalendarTime = (props) => {
   const [activeTimeSlot, setActiveTimeSlot] = useState(null);
   const [selectedSlots, setSelectedSlots] = useState(null);
@@ -51,7 +52,7 @@ const CalendarTime = (props) => {
             {time}
             {activeTimeSlot === time && (
               <div className="duration-options">
-                <button
+                <Button
                   className={`${
                     selectedSlots?.time === time &&
                     selectedSlots?.duration === 60
@@ -68,8 +69,8 @@ const CalendarTime = (props) => {
                   }}
                 >
                   60 minutes
-                </button>
-                <button
+                </Button>
+                <Button
                   className={`${
                     selectedSlots?.time === time &&
                     selectedSlots?.duration === 90
@@ -86,13 +87,13 @@ const CalendarTime = (props) => {
                   }}
                 >
                   90 minutes
-                </button>
+                </Button>
               </div>
             )}
           </div>
         ))}
       </div>
-      <button
+      <Button
         onClick={() => {
           if (activeTimeSlot) {
             handleSave(null, activeTimeSlot);
@@ -100,7 +101,7 @@ const CalendarTime = (props) => {
         }}
       >
         Сохранить время
-      </button>
+      </Button>
     </div>
   );
 };
