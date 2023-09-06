@@ -1,18 +1,37 @@
-image: ubuntu:latest
-
 stages:
   - build
-  - test
   - deploy
 
-deploy_job:
-  stage: deploy
-  before_script:
-    - apt-get update -qy
-    - apt-get install -y openssh-client rsync
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | ssh-add -
-  script:
-    - echo "Deploying to Amazon Linux server..."
-    - rsync -av -e "ssh -o StrictHostKeyChecking=no" --delete ./build/ ec2-user@54.221.157.175:~/html/
+variables:
+  TARGET_SERVER_USER_HOST: "ec2-user@54.221.157.175" # Замените на ваш SSH-логин и IP-адрес
+  TARGET_SERVER_PATH: "~/html/" # Замените на путь, куда нужно загрузить файлы на сервере
 
+build_react:
+  image: node:alpine
+  stage: build
+  script:
+    - echo "====== Install dependencies ======"
+    - npm install
+    - echo "====== Build React app ======"
+    - npm run build
+  artifacts:
+    paths:
+      - build/
+
+deploy_react:
+  image: alpine
+  stage: deploy
+  script:
+    - echo "====== Deploy to production server ======"
+    - apk update && apk upgrade
+    - apk add openssh bash rsync
+    - echo "====== Add target servers secret key ======"
+    - mkdir ~/.ssh
+    - echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/id_rsa
+    - chmod 700 ~/.ssh && chmod 600 ~/.ssh/*
+    - echo "====== Test SSH connection ======"
+    - ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -T "$TARGET_SERVER_USER_HOST"
+    - echo "====== Install rsync on remote server ======"
+    - ssh -T -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null "$TARGET_SERVER_USER_HOST" 'sudo apt-get install rsync -y'
+    - echo "====== Sync local and remote directory ======"
+    - rsync -azPq -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" --delete ./build/ "$TARGET_SERVER_USER_HOST:$TARGET_SERVER_PATH"
