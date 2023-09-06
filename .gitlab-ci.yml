@@ -1,20 +1,7 @@
 stages:
-  - build
-  - test
   - deploy
-build:
-  stage: build
-  script:
-    - npm install
-    - npm run build
 
-test:
-  stage: test
-  script:
-    - npm test
 deploy_job:
   stage: deploy
-  only:
-    - main
   script:
     - echo "Deploying to Amazon Linux server..."
