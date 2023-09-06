@@ -1,4 +1,4 @@
-image: alpine:latest
+image: ubuntu:latest
 
 stages:
   - build
@@ -11,7 +11,7 @@ deploy_job:
     - main
   before_script:
     - apt-get update -qy
-    - apt-get install -y rsync
+    - apt-get install -y rsync ssh
   script:
     - echo "Deploying to Amazon Linux server..."
     - rsync -av -e "ssh -i /Users/mans/Downloads/playground.pem" --delete ./build/ ec2-user@54.221.157.175:~/html/
