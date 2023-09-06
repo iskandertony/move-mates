@@ -7,11 +7,10 @@ stages:
 
 deploy_job:
   stage: deploy
-  only:
-    - main
   before_script:
-    - apt-get update -qy
-    - apt-get install -y rsync ssh
+    - apk add --no-cache openssh-client rsync
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | ssh-add -
   script:
     - echo "Deploying to Amazon Linux server..."
-    - rsync -av -e "ssh -i /Users/mans/Downloads/playground.pem" --delete ./build/ ec2-user@54.221.157.175:~/html/
+    - rsync -av --delete ./build/ ec2-user@54.221.157.175:~/html/
