@@ -1,11 +1,16 @@
+image: node:18
+
 stages:
   - build
   - test
   - deploy
+
 deploy_job:
   stage: deploy
   only:
     - main
+  before_script:
+    - apk add --no-cache rsync
   script:
     - echo "Deploying to Amazon Linux server..."
-    - rsync -av -e "ssh -i /Users/mans/Downloads/playground.pem" --delete ./build/ ec2-user@54.221.157.175:/path/to/html/
+    - rsync -av -e "ssh -i /Users/mans/Downloads/playground.pem" --delete ./build/ ec2-user@54.221.157.175:~/html/
