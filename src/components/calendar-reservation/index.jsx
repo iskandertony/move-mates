@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import "./style.scss";
 import CalendarTime from "../calendar-time";
 import MyCalendar from "../calendar";
+import {Button} from "antd";
 
 const CalendarReservation = () => {
   const [selectedDate, setSelectedDate] = useState(null);
@@ -24,7 +25,7 @@ const CalendarReservation = () => {
     <div className={"calendar_reservation"}>
       <MyCalendar setSelectedDate={setSelectedDate} />
       <CalendarTime setSelectedTime={setSelectedTime} />
-      <button onClick={saveAppointment}>Сохранить</button>
+      <Button onClick={saveAppointment}>Сохранить</Button>
       <div>
         {selectedAppointments.map((appointment, index) => (
           <div key={index}>
