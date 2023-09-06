@@ -10,7 +10,9 @@ deploy_job:
   only:
     - main
   before_script:
-    - apk add --no-cache rsync
+    - apk update -qy
+    - apk install -y rsync ssh
+
   script:
     - echo "Deploying to Amazon Linux server..."
     - rsync -av -e "ssh -i /Users/mans/Downloads/playground.pem" --delete ./build/ ec2-user@54.221.157.175:~/html/
