@@ -1,19 +1,13 @@
-image: ubuntu:latest
-
 stages:
   - build
-  - test
   - deploy
 
-deploy_job:
-  stage: deploy
-  before_script:
-    - apt-get update -qy
-    - apt-get install -y openssh-client rsync
-    - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | ssh-add -
+build:
+  stage: build
   script:
-    - echo "Printing the key to debug"
-    - echo "$SSH_PRIVATE_KEY"
-    - echo "Deploying to Amazon Linux server..."
-    - rsync -av --delete ./build/ ec2-user@54.221.157.175:~/html/
+    - npm build
+
+deploy:
+  stage: deploy
+  script:
+    - cp build/* /var/www/
