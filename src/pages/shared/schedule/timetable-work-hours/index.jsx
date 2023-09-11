@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Form, TimePicker, Checkbox, Button } from "antd";
-import { ClockCircleOutlined } from "@ant-design/icons";
 
 import "./style.scss";
 import { useNavigate } from "react-router-dom";
 import Names from "../../../../components/names";
 import Icon from "../../../../components/icon";
 import CustomInput from "../../../../components/input";
+import CreateWorkTime from "../../../../store/createWortTime";
 
 const daysOfWeek = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
 
@@ -37,6 +37,53 @@ const TimetableWorkHours = () => {
     setBreaks(updatedBreaks);
   };
 
+  const handleFinish = (values) => {
+    // Маппинг русских аббревиатур дней недели к английским
+    const dayMapping = {
+      Пн: "MONDAY",
+      Вт: "TUESDAY",
+      Ср: "WEDNESDAY",
+      Чт: "THURSDAY",
+      Пт: "FRIDAY",
+      Сб: "SATURDAY",
+      Вс: "SUNDAY",
+    };
+
+    const worktimeRequests = checkedDays.map((day) => {
+      const dayIndex = daysOfWeek.indexOf(day); // Получаем индекс дня недели
+      return {
+        dayOfWeek: dayMapping[day],
+        start: {
+          hour: values[`start_time_${dayIndex}`]
+            ? values[`start_time_${dayIndex}`].hour()
+            : 0,
+          minute: values[`start_time_${dayIndex}`]
+            ? values[`start_time_${dayIndex}`].minute()
+            : 0,
+          second: 0,
+          nano: 0,
+        },
+        end: {
+          hour: values[`end_time_${dayIndex}`]
+            ? values[`end_time_${dayIndex}`].hour()
+            : 0,
+          minute: values[`end_time_${dayIndex}`]
+            ? values[`end_time_${dayIndex}`].minute()
+            : 0,
+          second: 0,
+          nano: 0,
+        },
+        timeZone: "string", // замените на актуальную информацию
+        isBreak: breaks[day] ? true : false, // замените на актуальную информацию
+      };
+    });
+
+    console.log("Converted payload:", worktimeRequests);
+
+    // Вызываем API
+    CreateWorkTime.fetchWorkTime(worktimeRequests);
+  };
+
   return (
     <div className="container_mobile pt-20 flex flex-column gap-20 timetable_work_hours back_ground">
       <Names title={"Назад"} name={"Рабочие часы"} />
@@ -44,7 +91,7 @@ const TimetableWorkHours = () => {
       <div className={"text"}>
         Выберите дату и время, в которые вы работаете
       </div>
-      <Form>
+      <Form onFinish={handleFinish}>
         {daysOfWeek.map((day, index) => (
           <>
             <div className="flexRow" key={index}>
@@ -86,7 +133,7 @@ const TimetableWorkHours = () => {
             </div>
 
             {breaks[day] && (
-              <div className="breakRow">
+              <div className="breakRow" key={index}>
                 <div className="breakRow_content">
                   <div className={"title"}>Перерыв</div>
                 </div>
@@ -121,13 +168,13 @@ const TimetableWorkHours = () => {
           </>
         ))}
 
-
-
         <Form.Item label="Выходные дни">
           <CustomInput text={"Добавить"} onClick={handleCalendar} />
         </Form.Item>
 
-        <Button className={"button_done"}>Подтвердить</Button>
+        <Button htmlType="submit" className={"button_done"}>
+          Подтвердить
+        </Button>
       </Form>
     </div>
   );

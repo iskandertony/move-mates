@@ -8,15 +8,41 @@ import Names from "../../../components/names";
 import { useNavigate } from "react-router-dom";
 import Avatar from "../../../components/avatar";
 import Qualification from "../../qualification";
+import { editCoach } from "../../../api";
+import moment from "moment";
 
 const { Option } = Select;
 
 const Profile = () => {
   const [isOfflineSelected, setIsOfflineSelected] = useState(false);
+  const [isFirstLessonFree, setIsFirstLessonFree] = useState(false);
   const [form] = Form.useForm();
   const navigate = useNavigate();
-  const onFinish = (values) => {
-    // console.log("Received values of form: ", values);
+  const onFinish = async (values) => {
+    const filter = {
+      firstName: values.firstName,
+      lastName: "string",
+      duration: values.number,
+      groupPrice: values.number,
+      individualPrice: values.number,
+      phoneNumber: values.phoneNumber,
+      birthDate: "2023-09-07",
+      aboutMe: values.aboutMe,
+      experience: values.experience,
+      qualification: values.email,
+      availableOffline: values.email,
+      isFirstLessonFree: values.email,
+      offlineLocation: values.email,
+      offlineName: values.email,
+      supportedLanguages: ["ENG"],
+    };
+    console.log("values?", filter);
+    try {
+      const response = await editCoach(filter);
+      console.log("response", response);
+    } catch {
+      console.log("error");
+    }
   };
 
   const handleNavTimeTable = () => {
@@ -54,16 +80,13 @@ const Profile = () => {
       >
         <Form.Item
           label="Введите ваше имя"
-          name="fullName"
+          name="firstName"
           rules={[{ required: true, message: "Пожалуйста, введите ваше имя!" }]}
         >
           <Input />
         </Form.Item>
 
-        <Form.Item
-          label="Пожалуйста, добавьте рабочие часы"
-          name="additionalInput2"
-        >
+        <Form.Item label="Пожалуйста, добавьте рабочие часы" name="duration">
           <div className={"timetable_card"} onClick={handleNavTime}>
             <div className={"name"}> Рабочие часы </div>
             <Icon name={"arrow_rigth"} />
@@ -93,7 +116,7 @@ const Profile = () => {
           <>
             <Form.Item
               label="Название места"
-              name="location"
+              name="offlineName"
               rules={[
                 {
                   required: true,
@@ -105,7 +128,7 @@ const Profile = () => {
             </Form.Item>
             <Form.Item
               label="Адресс"
-              name="address"
+              name="offlineLocation"
               rules={[
                 { required: true, message: "Пожалуйста, укажите адресс!" },
               ]}
@@ -115,16 +138,20 @@ const Profile = () => {
           </>
         )}
 
-        <Form.Item name="toggleTraining" label="Переключатель тренировки">
+        <Form.Item name="isFirstLessonFree" label="Переключатель тренировки">
           <div className={"timetable_card"}>
             <div className={"title"}>Первая тренировка бесплатно </div>
-            <Switch />
+            <Switch
+              defaultChecked={isFirstLessonFree}
+              checked={isFirstLessonFree}
+              onChange={setIsFirstLessonFree}
+            />
           </div>
         </Form.Item>
 
         <Form.Item
           label="Пожалуйста, добавьте количество лет опыта"
-          name="additionalInput1"
+          name="experience"
           rules={[
             { required: true, message: "Пожалуйста, укажите опыт!" },
             {
@@ -138,7 +165,7 @@ const Profile = () => {
 
         <Form.Item
           label="Установите цену за час(индив/группа)"
-          name="additionalInput2"
+          name="number"
           rules={[
             { required: true, message: "Пожалуйста, укажите цену!" },
             {
@@ -162,7 +189,7 @@ const Profile = () => {
 
         <Form.Item
           label="Пожалуйста, добавьте цели, с которыми вы можете помочь своим клиентам"
-          name="goal"
+          name="aboutMe"
           rules={[{ required: true, message: "Пожалуйста, укажите цель!" }]}
         >
           <Input placeholder={"Цель"} />
@@ -170,7 +197,7 @@ const Profile = () => {
 
         <Form.Item
           label="Пожалуйста, добавьте детали квалификации (название, описание, сертификаты)"
-          name="additionalInput2"
+          name="qualification"
         >
           <div className={"timetable_card"} onClick={handleQualification}>
             <div className={"name"}>Квалификация</div>

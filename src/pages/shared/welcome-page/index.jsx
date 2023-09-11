@@ -8,6 +8,11 @@ const WelcomePage = () => {
   return (
     <div className="welcome">
       <div className="img" />
+      <NavLink to="/test/video" className="nav">
+        <Button className="button_dashboard pink" block>
+          Web RTC
+        </Button>
+      </NavLink>
       <NavLink to="/login" className="nav">
         <Button className="button_dashboard" block>
           Вход

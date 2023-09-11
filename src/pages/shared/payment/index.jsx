@@ -8,7 +8,6 @@ import Names from "../../../components/names";
 import Tab from "../../../components/tab";
 import Transactions from "../../../components/transactions ";
 
-
 const Payment = () => {
   return (
     <div className="container_mobile back_ground pay">

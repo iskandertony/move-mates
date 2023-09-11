@@ -16,16 +16,11 @@ import Profile from "../pages/shared/profile";
 import Main from "../pages/main";
 import AppointmentsBegin from "../components/appointments-begin";
 import VideoCall from "../pages/video-call";
-import TimeTableIndividual from "../pages/shared/schedule/timetable-individual";
-import TimeTableGroup from "../pages/shared/schedule/timetable-group";
 import TimetableWorkHours from "../pages/shared/schedule/timetable-work-hours";
-import TimetableWorkHoursCalendar from "../pages/shared/schedule/titmetable-work-hours-calendar";
-import AppointmentsAdd from "../pages/shared/calendar";
 import CoachDetails from "../pages/coach/coach-details";
 import Specialization from "../pages/specialization";
 import NewEventMentor from "../pages/shared/schedule/new-event";
 import TimeTableChoseClient from "../pages/shared/schedule/timetable-chose-client";
-import TimeTableChoseGroup from "../pages/shared/schedule/timetable-chose-group";
 import Reschedule from "../pages/reschedule";
 import Qualification from "../pages/qualification";
 import WorkHoursHoliday from "../pages/work-hours-holiday";
@@ -39,6 +34,10 @@ import TimeTableChoseGroupMentor from "../pages/shared/schedule/timetable-chose-
 import TimeTableChoseGroupClient from "../pages/client/timetable-chose-group";
 import TimeTableGroupClient from "../pages/client/timetable-group";
 import TimeTableGroupMentor from "../pages/shared/schedule/timetable-group";
+import PaymentDetails from "../pages/shared/payment-details";
+import TestVideo from "../pages/test-video";
+
+
 export const routing = {
   welcomePage: {
     path: "/dashboard",
@@ -78,6 +77,14 @@ export const routing = {
     protected: false,
     role: "all",
   },
+
+  paymentDetail: {
+    path: "/payment/1",
+    element: <PaymentDetails />, //
+    protected: false,
+    role: "all",
+  },
+
   client: {
     path: "/client",
     element: <ClientList />, //
@@ -291,4 +298,13 @@ export const routing = {
     protected: false,
     role: "all",
   },
+
+  TestVideo: {
+    path: "/test/video",
+    element: <TestVideo />,
+    protected: false,
+    role: "all",
+  },
+
+
 };

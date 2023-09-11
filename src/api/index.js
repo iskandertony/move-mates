@@ -39,12 +39,22 @@ export async function getUser(role) {
   return request(`/api/${role}/me`, "GET");
 }
 
+export async function editCoach(filter) {
+  return request(`/api/coaches/edit`, "GET", null, null, filter);
+}
+export async function editClient(filter) {
+  return request(`/api/clients/me/update`, "GET", null, null, filter);
+}
 export async function signUp(data, role) {
   return request(`/auth/${role}/create`, "POST", data);
 }
 
 export async function createAppointments(data) {
   return request(`/api/coaches/appointments`, "POST", data);
+}
+
+export async function createWorkTime(data) {
+  return request(`/api/coaches/worktimes/doUpdateWortime`, "POST", data);
 }
 
 export async function getAppointments(filter) {
