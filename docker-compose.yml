@@ -4,7 +4,7 @@ services:
     build:
       context: .
       args:
-        REACT_APP_BACKEND_URL: ${REACT_APP_BACKEND_URL}
+        REACT_APP_BACKEND_URL: http://54.221.157.175:8086
     image: frontend-web
     ports:
       - 80:80
