@@ -91,9 +91,9 @@ const Login = observer(() => {
             </Form.Item>
             <Divider>или</Divider>
             <NavLink to={"/main"} className="nav">
-            <Button className="button" block>
-              Google
-            </Button>
+              <Button className="button" block>
+                Google
+              </Button>
             </NavLink>
             <NavLink to={"/register"} className="nav">
               <div className="register_text">

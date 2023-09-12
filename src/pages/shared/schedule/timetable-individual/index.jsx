@@ -17,7 +17,7 @@ const TimeTableIndividualMentor = () => {
   };
   return (
     <div className={"container_mobile timetable_individual back_ground"}>
-      <Names name={"Индивидуальная"} />
+      <Names title={"Назад"} name={"Индивидуальная"} />
 
       <Form layout="vertical">
         <Form.Item label="Специализация">

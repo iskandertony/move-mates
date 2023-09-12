@@ -28,8 +28,8 @@ const DrawerMenu = observer(({ open, setOpen }) => {
         title={
           <div className={"drawer_menu"}>
             <Avatar />
-            <div className="name">{userStore.user?.userName}</div>
-            <div className="title">Тренер</div>
+            <div className="name">{userStore.user?.firstName}</div>
+            <div className="title">{userStore.role}</div>
           </div>
         }
         placement={placement}

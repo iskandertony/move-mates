@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Icon from "../icon";
 import "./style.scss";
 import Avatar from "../avatar";
+import { NavLink } from "react-router-dom";
 
 const Transactions = () => {
   const clients = [
@@ -9,6 +10,7 @@ const Transactions = () => {
       name: "Айдай Айдай",
       work: "Hiit",
       time: new Date(),
+      link: "/payment/1",
     },
     {
       name: "Куб байке",
@@ -70,14 +72,17 @@ const Transactions = () => {
         </div>
       </div>
       {todayTransactions.map((item) => (
-        <div className={"card_transaction"}>
-          <Avatar />
-          <div>
-            <div className={"title"}>{item.name}</div>
-            <div className={"text"}>{formatTime(item.time)}</div>
+        <NavLink to={item.link}>
+          <div className={"card_transaction"}>
+            <Avatar />
+            <div>
+              <div className={"title"}>{item.name}</div>
+
+              <div className={"text"}>{formatTime(item.time)}</div>
+            </div>
+            <div className={"text"}>+2000 сом</div>
           </div>
-          <div className={"text"}>+2000 сом</div>
-        </div>
+        </NavLink>
       ))}
 
       <div className={"name"}>Вчера</div>

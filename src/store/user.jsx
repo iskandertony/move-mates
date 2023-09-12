@@ -1,8 +1,6 @@
 import { makeAutoObservable, reaction, runInAction } from "mobx";
-import axios from "axios";
-import { BASE_API_URL } from "../helpers/api";
 import authStore from "./auth";
-import { getUser, signUp } from "../api";
+import { getUser } from "../api";
 
 function createUserStore() {
   let store = {
@@ -22,6 +20,9 @@ function createUserStore() {
           let lowercaseRole = store.role?.toLowerCase();
           if (lowercaseRole === "coach") {
             lowercaseRole += "es";
+          }
+          if (lowercaseRole === "client") {
+            lowercaseRole += "s";
           }
           const response = await getUser(lowercaseRole);
           runInAction(() => {

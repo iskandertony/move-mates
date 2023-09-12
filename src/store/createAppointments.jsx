@@ -3,7 +3,7 @@ import authStore from "./auth";
 import moment from "moment/moment";
 import { getAppointments } from "../api";
 
-function getAppointmentsStore() {
+function createAppointmentsStore() {
   const today = moment();
   let store = {
     appointments: [],
@@ -50,6 +50,6 @@ function getAppointmentsStore() {
   return store;
 }
 
-const listAppointments = getAppointmentsStore();
+const listAppointments = createAppointmentsStore();
 
 export default listAppointments;
