@@ -1,8 +1,7 @@
 stages:
   - build
-  - deploy
 
 build:
   stage: build
   script:
-    - docker-compose up --build -d
+    - docker-compose up --build -d -e REACT_APP_BACKEND_URL=http://54.221.157.175:8086
