@@ -5,10 +5,4 @@ stages:
 build:
   stage: build
   script:
-    - npm install
-    - npm run build
-
-deploy:
-  stage: deploy
-  script:
-    - cp build/* /var/www/
+    - docker-compose up --build -d
